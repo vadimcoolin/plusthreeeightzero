@@ -61,7 +61,7 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
 
 <aside class="fixed inset-0 bg-[var(--color-bg)] z-40 pt-[var(--height-header)] hidden js-mobile-menu">
   <div class="flex flex-col h-full" style={`padding: 0 var(--spacing-page) var(--spacing-page)`}>
-    <nav class="flex-1 flex flex-col justify-center">
+    <nav class="flex-1 overflow-y-auto flex flex-col justify-center items-start">
       <ul class="flex flex-col" style={`gap: var(--spacing-menu-gap)`}>
         {links.map((link) => (
           <li>

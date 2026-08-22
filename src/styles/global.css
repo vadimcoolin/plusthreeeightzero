@@ -27,7 +27,7 @@
   :root {
     --spacing-page: max(12px, 3.125vw);
     --spacing-logo: max(16px, 4.726vw);
-    --spacing-menu-gap: max(12px, 3.125vw);
+    --spacing-menu-gap: max(4px, 1.042vw);
     --spacing-header-gap: max(8px, 2.083vw);
     --spacing-switcher-gap: max(1px, 0.26vw);
 
