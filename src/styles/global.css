@@ -25,20 +25,20 @@
 
 @media (max-width: 767px) {
   :root {
-    --spacing-page: 24px;
-    --spacing-logo: 16px;
-    --spacing-menu-gap: 24px;
-    --spacing-header-gap: 16px;
-    --spacing-switcher-gap: 2px;
+    --spacing-page: max(12px, 3.125vw);
+    --spacing-logo: max(8px, 2.083vw);
+    --spacing-menu-gap: max(12px, 3.125vw);
+    --spacing-header-gap: max(8px, 2.083vw);
+    --spacing-switcher-gap: max(1px, 0.26vw);
 
-    --font-size-subtitle: 32px;
-    --font-size-title: 106px;
-    --font-size-menu: 16px;
-    --font-size-button: 32px;
+    --font-size-subtitle: max(16px, 4.167vw);
+    --font-size-title: max(53px, 13.823vw);
+    --font-size-menu: max(8px, 2.083vw);
+    --font-size-button: max(16px, 4.167vw);
 
-    --height-header: 48px;
-    --height-button: 64px;
-    --padding-button-x: 96px;
+    --height-header: max(24px, 6.25vw);
+    --height-button: max(32px, 8.341vw);
+    --padding-button-x: max(48px, 12.516vw);
   }
 }
 
