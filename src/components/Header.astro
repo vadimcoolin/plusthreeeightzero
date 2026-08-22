@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 const lang = Astro.url.pathname.startsWith('/uk') ? 'uk' : 'en';
 
 const links = lang === 'uk'
@@ -18,13 +19,13 @@ const links = lang === 'uk'
     ];
 
 const switchLang = lang === 'uk' ? 'EN' : 'UA';
-const switchUrl = lang === 'uk' ? '/' : '/uk/';
+const switchUrl = lang === 'uk' ? base : `${base}uk/`;
 ---
 
 <header class="absolute top-0 left-0 w-full z-50">
   <nav class="flex items-center justify-between px-8 py-6">
-    <a href={lang === 'uk' ? '/uk/' : '/'}>
-      <img src="/logo_main.svg" alt="Plusthreeeightzero" class="h-[30px]" />
+    <a href={lang === 'uk' ? `${base}uk/` : base}>
+      <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" class="h-[30px]" />
     </a>
     <div class="flex items-center gap-8">
       <ul class="flex items-center gap-6">
@@ -42,7 +43,7 @@ const switchUrl = lang === 'uk' ? '/' : '/uk/';
         <span class={lang === 'uk' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>UA</span>
       </a>
       <button class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
-        <img src="/plus.svg" alt="+" class="w-[18px] h-[18px]" />
+        <img src={`${base}plus.svg`} alt="+" class="w-[18px] h-[18px]" />
       </button>
     </div>
   </nav>

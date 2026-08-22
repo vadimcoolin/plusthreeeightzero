@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="PlusThreeEightZero" lang="uk">
@@ -12,7 +13,7 @@ import Header from '../../components/Header.astro';
       </p>
       <h1 class="text-[8.5vw] uppercase leading-[0.95] tracking-tight">
         <div class="font-extralight">Будуємо Бренди</div>
-        <div class="font-semibold"><img src="/plus.svg" class="inline-block h-[1cap] w-auto align-baseline" alt="" /> Команди,</div>
+        <div class="font-semibold"><img src={`${base}plus.svg`} class="inline-block h-[1cap] w-auto align-baseline" alt="" /> Команди,</div>
         <div class="font-semibold text-right">Що Ними Керують</div>
       </h1>
       <a href="#contacts" class="inline-block border border-current px-[82px] py-3 mt-8 text-[28px] font-medium w-fit rounded-full hover:bg-[var(--color-text)] hover:text-[var(--color-bg)] transition-colors">
