@@ -9,8 +9,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   i18n: {
-    locales: ['en', 'uk'],
+    locales: ['en', 'ua'],
     defaultLocale: 'en',
-    prefixDefaultLocale: false,
+    prefixDefaultLocale: true,
   },
 });
