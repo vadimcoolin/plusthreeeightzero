@@ -74,15 +74,25 @@ plusthreeeightzero/
 - Plus icon in title uses `h-[1cap]` (matches cap height of font)
 - Third line of title is right-aligned (`text-right`)
 
-## Typography Rules
+## Responsive System
 
-- Subtitle: 32px, font-normal
-- Menu items: 22px, font-medium
-- Button text: 28px, font-medium
-- Title: 8.5vw, uppercase, leading 0.95
+- **Two breakpoints**: `md: 768px`, `xl: 1440px`
+- **Three zones**: mobile (<768), desktop (768–1440), large (>1440)
+- **All values scale fluidly** using `clamp(min, calc(value * 100vw / 1440), max)`
+- **Design reference**: 1440px — all sizes provided for 1440, auto-scaled to 768
+- Fluid CSS variables defined in `src/styles/global.css` via `@theme`
+
+## Typography Rules (at 1440px, scale fluidly)
+
+- Subtitle: 24px, font-normal
+- Menu items: 16px, font-medium, gap 48px
+- Button text: 20px, font-medium, height 44px, padding-x 64px
+- Title: 140px, uppercase, leading 0.95
   - Line 1: font-extralight (200)
   - Line 2: font-semibold (600)
   - Line 3: font-semibold (600), text-right
+- Content padding from edges: 24px
+- Logo/icon height: 20px
 
 ## Documentation
 
