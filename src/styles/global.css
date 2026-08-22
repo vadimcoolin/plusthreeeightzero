@@ -7,20 +7,39 @@
   --breakpoint-md: 768px;
   --breakpoint-xl: 1440px;
 
-  --spacing-page: max(24px, 1.667vw);
-  --spacing-logo: max(16px, 1.389vw);
+  --spacing-page: max(12px, 1.667vw);
+  --spacing-logo: max(10px, 1.389vw);
   --spacing-menu-gap: max(24px, 3.333vw);
   --spacing-header-gap: max(16px, 2.222vw);
   --spacing-switcher-gap: max(2px, 0.278vw);
 
-  --font-size-subtitle: max(32px, 1.667vw);
-  --font-size-title: max(106px, 9.167vw);
-  --font-size-menu: max(16px, 1.111vw);
-  --font-size-button: max(32px, 1.389vw);
+  --font-size-subtitle: max(12px, 1.667vw);
+  --font-size-title: max(70px, 9.167vw);
+  --font-size-menu: max(8px, 1.111vw);
+  --font-size-button: max(10px, 1.389vw);
 
-  --height-header: max(48px, 3.056vw);
-  --height-button: max(64px, 3.056vw);
-  --padding-button-x: max(96px, 4.444vw);
+  --height-header: max(48px, 4.444vw);
+  --height-button: max(22px, 3.056vw);
+  --padding-button-x: max(32px, 4.444vw);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --spacing-page: 24px;
+    --spacing-logo: 16px;
+    --spacing-menu-gap: 24px;
+    --spacing-header-gap: 16px;
+    --spacing-switcher-gap: 2px;
+
+    --font-size-subtitle: 32px;
+    --font-size-title: 106px;
+    --font-size-menu: 16px;
+    --font-size-button: 32px;
+
+    --height-header: 48px;
+    --height-button: 64px;
+    --padding-button-x: 96px;
+  }
 }
 
 html, body {
