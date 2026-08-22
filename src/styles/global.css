@@ -7,20 +7,20 @@
   --breakpoint-md: 768px;
   --breakpoint-xl: 1440px;
 
-  --spacing-page: max(16px, 1.667vw);
+  --spacing-page: max(24px, 1.667vw);
   --spacing-logo: max(16px, 1.389vw);
   --spacing-menu-gap: max(24px, 3.333vw);
   --spacing-header-gap: max(16px, 2.222vw);
   --spacing-switcher-gap: max(2px, 0.278vw);
 
-  --font-size-subtitle: max(16px, 1.667vw);
-  --font-size-title: max(53px, 9.167vw);
-  --font-size-menu: max(8px, 1.111vw);
-  --font-size-button: max(16px, 1.389vw);
+  --font-size-subtitle: max(32px, 1.667vw);
+  --font-size-title: max(106px, 9.167vw);
+  --font-size-menu: max(16px, 1.111vw);
+  --font-size-button: max(32px, 1.389vw);
 
-  --height-header: 32px;
-  --height-button: max(32px, 3.056vw);
-  --padding-button-x: max(48px, 4.444vw);
+  --height-header: max(48px, 3.056vw);
+  --height-button: max(64px, 3.056vw);
+  --padding-button-x: max(96px, 4.444vw);
 }
 
 html, body {
