@@ -3,33 +3,47 @@ const lang = Astro.url.pathname.startsWith('/uk') ? 'uk' : 'en';
 
 const links = lang === 'uk'
   ? [
-      { href: '/uk/', label: 'Головна' },
-      { href: '/uk/about', label: 'Про нас' },
-      { href: '/uk/contacts', label: 'Контакти' },
+      { href: '#index', label: 'Головна' },
+      { href: '#services', label: 'Послуги' },
+      { href: '#about', label: 'Про нас' },
+      { href: '#works', label: 'Проєкти' },
+      { href: '#contacts', label: 'Контакти' },
     ]
   : [
-      { href: '/en/', label: 'Home' },
-      { href: '/en/about', label: 'About' },
-      { href: '/en/contacts', label: 'Contacts' },
+      { href: '#index', label: 'Index' },
+      { href: '#services', label: 'Services' },
+      { href: '#about', label: 'About' },
+      { href: '#works', label: 'Works' },
+      { href: '#contacts', label: 'Contacts' },
     ];
+
+const switchLang = lang === 'uk' ? 'EN' : 'UA';
+const switchUrl = lang === 'uk' ? Astro.url.pathname.replace('/uk', '/en') : Astro.url.pathname.replace('/en', '/uk');
 ---
 
-<header class="bg-white border-b border-gray-200">
-  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href={lang === 'uk' ? '/uk/' : '/en/'} class="text-xl font-bold text-brand">
-      PlusThreeEightZero
+<header class="absolute top-0 left-0 w-full z-50">
+  <nav class="flex items-center justify-between px-8 py-6">
+    <a href={lang === 'uk' ? '/uk/' : '/en/'}>
+      <img src="/logo_main.svg" alt="Plusthreeeightzero" class="h-[30px]" />
     </a>
-    <ul class="flex gap-6">
-      {links.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            class="text-gray-600 hover:text-brand transition-colors"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="flex items-center gap-8">
+      <ul class="flex items-center gap-6">
+        {links.map((link) => (
+          <li>
+            <a href={link.href} class="text-[22px] font-medium hover:opacity-60 transition-opacity">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a href={switchUrl} class="flex items-center gap-2 text-[22px] font-medium">
+        <span class={lang === 'en' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>EN</span>
+        <span class="text-[#81807F]">/</span>
+        <span class={lang === 'uk' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>UA</span>
+      </a>
+      <button class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
+        <img src="/plus.svg" alt="+" class="w-[18px] h-[18px]" />
+      </button>
+    </div>
   </nav>
 </header>
