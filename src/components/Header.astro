@@ -18,7 +18,6 @@ const links = lang === 'ua'
       { href: '#contacts', label: 'Contacts' },
     ];
 
-const switchLang = lang === 'ua' ? 'EN' : 'UA';
 const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
 ---
 
@@ -27,7 +26,8 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
     <a href={`${base}${lang}/`}>
       <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" style="height: var(--spacing-logo)" />
     </a>
-    <div class="flex items-center" style={`gap: var(--spacing-header-gap)`}>
+
+    <div class="hidden md:flex items-center" style={`gap: var(--spacing-header-gap)`}>
       <ul class="flex items-center" style={`gap: var(--spacing-menu-gap)`}>
         {links.map((link) => (
           <li>
@@ -46,5 +46,71 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
         <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
       </button>
     </div>
+
+    <div class="flex md:hidden items-center" style={`gap: var(--spacing-page)`}>
+      <button class="js-burger-toggle flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Toggle menu">
+        <img src={`${base}burger.svg`} alt="Menu" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+      </button>
+      <button class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
+        <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+      </button>
+    </div>
   </nav>
 </header>
+
+<aside class="fixed inset-0 bg-[var(--color-bg)] z-40 hidden js-mobile-menu">
+  <div class="flex flex-col h-full" style={`padding: var(--spacing-page)`}>
+    <div class="flex items-center justify-between" style={`height: var(--height-header)`}>
+      <a href={`${base}${lang}/`}>
+        <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" style="height: var(--spacing-logo)" />
+      </a>
+      <div class="flex items-center" style={`gap: var(--spacing-page)`}>
+        <button class="js-burger-close flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Close menu">
+          <img src={`${base}burger.svg`} alt="Close" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+        </button>
+        <button class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
+          <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+        </button>
+      </div>
+    </div>
+    <nav class="flex-1 flex flex-col justify-center">
+      <ul class="flex flex-col" style={`gap: var(--spacing-menu-gap)`}>
+        {links.map((link) => (
+          <li>
+            <a href={link.href} class="js-mobile-menu-link block font-medium hover:opacity-60 transition-opacity" style={`font-size: var(--font-size-title)`}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-auto" style={`padding-bottom: var(--spacing-page)`}>
+        <a href={switchUrl} class="flex items-center font-medium" style={`gap: var(--spacing-switcher-gap); font-size: var(--font-size-menu)`}>
+          <span class={lang === 'en' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>EN</span>
+          <span class="text-[#81807F]">/</span>
+          <span class={lang === 'ua' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>UA</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</aside>
+
+<script>
+  const burgerToggle = document.querySelector('.js-burger-toggle');
+  const burgerClose = document.querySelector('.js-burger-close');
+  const mobileMenu = document.querySelector('.js-mobile-menu');
+  const mobileLinks = document.querySelectorAll('.js-mobile-menu-link');
+
+  function openMenu() {
+    mobileMenu?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    mobileMenu?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  burgerToggle?.addEventListener('click', openMenu);
+  burgerClose?.addEventListener('click', closeMenu);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+</script>
