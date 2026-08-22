@@ -1,0 +1,35 @@
+---
+const lang = Astro.url.pathname.startsWith('/uk') ? 'uk' : 'en';
+
+const links = lang === 'uk'
+  ? [
+      { href: '/uk/', label: 'Головна' },
+      { href: '/uk/about', label: 'Про нас' },
+      { href: '/uk/contacts', label: 'Контакти' },
+    ]
+  : [
+      { href: '/en/', label: 'Home' },
+      { href: '/en/about', label: 'About' },
+      { href: '/en/contacts', label: 'Contacts' },
+    ];
+---
+
+<header class="bg-white border-b border-gray-200">
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href={lang === 'uk' ? '/uk/' : '/en/'} class="text-xl font-bold text-brand">
+      PlusThreeEightZero
+    </a>
+    <ul class="flex gap-6">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-gray-600 hover:text-brand transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

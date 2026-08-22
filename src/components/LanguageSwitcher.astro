@@ -1,0 +1,14 @@
+---
+const pathname = Astro.url.pathname;
+const isUk = pathname.startsWith('/uk');
+
+const switchUrl = isUk ? pathname.replace('/uk', '/en') : pathname.replace('/en', '/uk');
+const switchLang = isUk ? 'EN' : 'UA';
+---
+
+<a
+  href={switchUrl}
+  class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors"
+>
+  {switchLang}
+</a>

@@ -1,0 +1,11 @@
+---
+const year = new Date().getFullYear();
+const lang = Astro.url.pathname.startsWith('/uk') ? 'uk' : 'en';
+const copyright = lang === 'uk' ? 'Всі права захищені' : 'All rights reserved';
+---
+
+<footer class="bg-gray-900 text-gray-400 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-center">
+    <p>&copy; {year} PlusThreeEightZero. {copyright}.</p>
+  </div>
+</footer>

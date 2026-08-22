@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+---
+
+<BaseLayout title="About - PlusThreeEightZero" lang="en">
+  <Header />
+  <main class="flex-1">
+    <section class="max-w-6xl mx-auto px-4 py-20">
+      <h1 class="text-4xl font-bold mb-6">About Us</h1>
+      <p class="text-gray-600 mb-4">
+        Information about the agency will be here.
+      </p>
+      <LanguageSwitcher />
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
