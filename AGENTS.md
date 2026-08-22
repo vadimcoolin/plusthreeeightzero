@@ -4,8 +4,9 @@ Static agency website. Astro + Tailwind CSS v4. Bilingual: English + Ukrainian.
 
 ## URLs
 
-- English (default): `https://vadimcoolin.github.io/plusthreeeightzero/`
-- Ukrainian: `https://vadimcoolin.github.io/plusthreeeightzero/uk/`
+- English (default): `https://coolin.cc/plusthreeeightzero/`
+- Ukrainian: `https://coolin.cc/plusthreeeightzero/uk/`
+- GitHub Pages (redirects to coolin.cc): `https://vadimcoolin.github.io/plusthreeeightzero/`
 
 ## Development
 
@@ -53,6 +54,8 @@ plusthreeeightzero/
 
 ## Rules
 
+- Site is served from `/plusthreeeightzero/` subpath — `base: '/plusthreeeightzero/'` in astro.config.mjs
+- Use `import.meta.env.BASE_URL` for all asset paths and internal links (never hardcode `/`)
 - English is the default language at root `/`
 - Ukrainian is at `/uk/`
 - All UI text must exist in both languages (en + uk)
