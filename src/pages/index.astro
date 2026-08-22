@@ -1,3 +1,23 @@
 ---
-return Astro.redirect('/en/');
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
 ---
+
+<BaseLayout title="PlusThreeEightZero" lang="en">
+  <Header />
+  <main>
+    <section id="index" class="h-screen flex flex-col justify-end px-8 pb-16">
+      <p class="text-[32px] font-normal tracking-wide mb-4">
+        Strategic Brand Design Partner
+      </p>
+      <h1 class="text-[8.5vw] uppercase leading-[0.95] tracking-tight">
+        <div class="font-extralight">We Build Brands</div>
+        <div class="font-semibold"><img src="/plus.svg" class="inline-block h-[1cap] w-auto align-baseline" alt="" /> The Teams</div>
+        <div class="font-semibold text-right">That Run Them</div>
+      </h1>
+      <a href="#contacts" class="inline-block border border-current px-[82px] py-3 mt-8 text-[28px] font-medium w-fit rounded-full hover:bg-[var(--color-text)] hover:text-[var(--color-bg)] transition-colors">
+        Contact Us
+      </a>
+    </section>
+  </main>
+</BaseLayout>

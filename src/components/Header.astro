@@ -18,12 +18,12 @@ const links = lang === 'uk'
     ];
 
 const switchLang = lang === 'uk' ? 'EN' : 'UA';
-const switchUrl = lang === 'uk' ? Astro.url.pathname.replace('/uk', '/en') : Astro.url.pathname.replace('/en', '/uk');
+const switchUrl = lang === 'uk' ? '/' : '/uk/';
 ---
 
 <header class="absolute top-0 left-0 w-full z-50">
   <nav class="flex items-center justify-between px-8 py-6">
-    <a href={lang === 'uk' ? '/uk/' : '/en/'}>
+    <a href={lang === 'uk' ? '/uk/' : '/'}>
       <img src="/logo_main.svg" alt="Plusthreeeightzero" class="h-[30px]" />
     </a>
     <div class="flex items-center gap-8">
