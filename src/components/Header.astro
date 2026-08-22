@@ -49,8 +49,7 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
 
     <div class="flex md:hidden items-center" style={`gap: var(--spacing-page)`}>
       <button class="js-burger-toggle flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Toggle menu">
-        <img class="js-burger-icon" src={`${base}burger.svg`} alt="Menu" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
-        <img class="js-burger-close-icon hidden" src={`${base}x.svg`} alt="Close" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+        <img src={`${base}burger.svg`} alt="Menu" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
       </button>
       <button class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
         <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
@@ -59,13 +58,26 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
   </nav>
 </header>
 
-<aside class="fixed inset-0 bg-[var(--color-bg)] z-40 pt-[var(--height-header)] hidden js-mobile-menu">
-  <div class="flex flex-col h-full" style={`padding: 0 var(--spacing-page) var(--spacing-page)`}>
-    <nav class="flex-1 overflow-y-auto flex flex-col justify-center items-start">
+<aside class="fixed inset-0 bg-[var(--color-bg)] z-40 hidden js-mobile-menu">
+  <div class="flex flex-col h-full" style={`padding: var(--spacing-page)`}>
+    <div class="flex items-center justify-between" style={`height: var(--height-header)`}>
+      <a href={`${base}${lang}/`}>
+        <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" style="height: var(--spacing-logo)" />
+      </a>
+      <div class="flex items-center" style={`gap: var(--spacing-page)`}>
+        <button class="js-burger-close flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Close menu">
+          <img src={`${base}x.svg`} alt="Close" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+        </button>
+        <button class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
+          <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo)`} />
+        </button>
+      </div>
+    </div>
+    <nav class="flex-1 flex flex-col justify-center items-start">
       <ul class="flex flex-col" style={`gap: var(--spacing-menu-gap)`}>
         {links.map((link) => (
           <li>
-            <a href={link.href} class="js-mobile-menu-link block font-semibold uppercase hover:opacity-60 transition-opacity" style={`font-size: var(--font-size-title)`}>
+            <a href={link.href} class="js-mobile-menu-link block font-semibold hover:opacity-60 transition-opacity" style={`font-size: var(--font-size-menu-mobile); line-height: 0.85`}>
               {link.label}
             </a>
           </li>
@@ -84,26 +96,21 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
 
 <script>
   const burgerToggle = document.querySelector('.js-burger-toggle');
-  const burgerIcon = document.querySelector('.js-burger-icon');
-  const burgerCloseIcon = document.querySelector('.js-burger-close-icon');
+  const burgerClose = document.querySelector('.js-burger-close');
   const mobileMenu = document.querySelector('.js-mobile-menu');
   const mobileLinks = document.querySelectorAll('.js-mobile-menu-link');
 
   function openMenu() {
-    burgerIcon?.classList.add('hidden');
-    burgerCloseIcon?.classList.remove('hidden');
     mobileMenu?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
-    burgerIcon?.classList.remove('hidden');
-    burgerCloseIcon?.classList.add('hidden');
     mobileMenu?.classList.add('hidden');
     document.body.style.overflow = '';
   }
 
   burgerToggle?.addEventListener('click', openMenu);
-  burgerCloseIcon?.addEventListener('click', closeMenu);
+  burgerClose?.addEventListener('click', closeMenu);
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 </script>
