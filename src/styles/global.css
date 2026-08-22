@@ -7,17 +7,17 @@
   --breakpoint-md: 768px;
   --breakpoint-xl: 1440px;
 
-  --spacing-page: clamp(12px, 1.667vw, 24px);
-  --spacing-logo: clamp(10px, 1.389vw, 20px);
-  --spacing-menu-gap: clamp(24px, 3.333vw, 48px);
+  --spacing-page: max(12px, 1.667vw);
+  --spacing-logo: max(10px, 1.389vw);
+  --spacing-menu-gap: max(24px, 3.333vw);
 
-  --font-size-subtitle: clamp(12px, 1.667vw, 24px);
-  --font-size-title: clamp(70px, 9.722vw, 140px);
-  --font-size-menu: clamp(8px, 1.111vw, 16px);
-  --font-size-button: clamp(10px, 1.389vw, 20px);
+  --font-size-subtitle: max(12px, 1.667vw);
+  --font-size-title: max(70px, 9.722vw);
+  --font-size-menu: max(8px, 1.111vw);
+  --font-size-button: max(10px, 1.389vw);
 
-  --height-button: clamp(22px, 3.056vw, 44px);
-  --padding-button-x: clamp(32px, 4.444vw, 64px);
+  --height-button: max(22px, 3.056vw);
+  --padding-button-x: max(32px, 4.444vw);
 }
 
 html, body {
