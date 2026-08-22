@@ -27,7 +27,7 @@ const switchUrl = lang === 'uk' ? base : `${base}uk/`;
     <a href={lang === 'uk' ? `${base}uk/` : base}>
       <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" style="height: var(--spacing-logo)" />
     </a>
-    <div class="flex items-center gap-8">
+    <div class="flex items-center" style={`gap: var(--spacing-header-gap)`}>
       <ul class="flex items-center" style={`gap: var(--spacing-menu-gap)`}>
         {links.map((link) => (
           <li>
@@ -37,7 +37,7 @@ const switchUrl = lang === 'uk' ? base : `${base}uk/`;
           </li>
         ))}
       </ul>
-      <a href={switchUrl} class="flex items-center gap-2 font-medium" style={`font-size: var(--font-size-menu)`}>
+      <a href={switchUrl} class="flex items-center font-medium" style={`gap: var(--spacing-switcher-gap); font-size: var(--font-size-menu)`}>
         <span class={lang === 'en' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>EN</span>
         <span class="text-[#81807F]">/</span>
         <span class={lang === 'uk' ? 'text-[var(--color-text)]' : 'text-[#81807F]'}>UA</span>

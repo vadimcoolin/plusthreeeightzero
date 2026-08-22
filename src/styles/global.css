@@ -10,6 +10,8 @@
   --spacing-page: max(12px, 1.667vw);
   --spacing-logo: max(10px, 1.389vw);
   --spacing-menu-gap: max(24px, 3.333vw);
+  --spacing-header-gap: max(16px, 2.222vw);
+  --spacing-switcher-gap: max(4px, 0.556vw);
 
   --font-size-subtitle: max(12px, 1.667vw);
   --font-size-title: max(70px, 9.722vw);
