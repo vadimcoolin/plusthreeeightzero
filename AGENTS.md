@@ -78,6 +78,39 @@ plusthreeeightzero/
 - Letter spacing: `-0.03em` globally (applied to body)
 - Contact button links to `mailto:ivanrogovchenko@gmail.com`
 
+## Theme System
+
+Clicking the + icon cycles through 6 themes: white → black → color1 → white → black → color2.
+
+### Theme Cycle
+
+The cycle depends on browser preference (`prefers-color-scheme`):
+- **Light mode**: white (0) → black (1) → color1 (2) → white (3) → black (4) → color2 (5)
+- **Dark mode**: black (1) → white (0) → color1 (2) → black (3) → white (4) → color2 (5)
+
+### Color Schemes
+
+| Theme   | Primary (bg) | Secondary (text) | Muted   |
+|---------|--------------|-------------------|---------|
+| White   | #EBEAE5      | #28282A           | #81807F |
+| Black   | #28282A      | #EBEAE5           | #81807F |
+| Color 1 | #ED008C      | #E2E417           | #F39393 |
+| Color 2 | #1D2795      | #FEE9E8           | #B0B8C8 |
+
+### CSS Variables
+
+- `--color-primary` — background
+- `--color-secondary` — text
+- `--color-muted` — inactive/muted elements
+
+### Implementation
+
+- `BaseLayout.astro` — FOUC prevention script (inline, runs before body render)
+- `Header.astro` — theme toggle logic + `applyTheme()` function
+- `global.css` — variables in `@theme` + `html, body` transition
+- SVG icons use `currentColor` + inline `color` style for theme adaptation
+- `localStorage.getItem('themeIndex')` persists the user's choice
+
 ## Responsive System
 
 - **Two breakpoints**: `md: 768px`, `xl: 1440px`

@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #EBEAE5;
-  --color-text: #28282A;
+  --color-primary: #EBEAE5;
+  --color-secondary: #28282A;
+  --color-muted: #81807F;
 
   --breakpoint-md: 768px;
   --breakpoint-xl: 1440px;
 
   --spacing-page: max(12px, 1.667vw);
   --spacing-logo: max(10px, 1.389vw);
-  --spacing-menu-gap: max(24px, 3.333vw);
-  --spacing-header-gap: max(16px, 2.222vw);
+  --spacing-header-item-gap: max(16px, 2.222vw);
   --spacing-switcher-gap: max(2px, 0.278vw);
 
   --font-size-subtitle: max(12px, 1.667vw);
@@ -27,8 +27,8 @@
   :root {
     --spacing-page: max(12px, 3.125vw);
     --spacing-logo: max(16px, 4.726vw);
-    --spacing-menu-gap: max(8px, 2.083vw);
-    --spacing-header-gap: max(8px, 2.083vw);
+    --spacing-header-item-gap: max(8px, 2.083vw);
+    --spacing-mobile-menu-gap: max(16px, 4.727vw);
     --spacing-switcher-gap: max(1px, 0.26vw);
 
     --font-size-subtitle: max(16px, 4.167vw);
@@ -47,9 +47,10 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
   letter-spacing: -0.03em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
 }

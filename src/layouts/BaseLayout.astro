@@ -24,6 +24,27 @@ const { title, lang } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <script is:inline>
+      (function() {
+        var themes = [
+          { primary: '#EBEAE5', secondary: '#28282A', muted: '#81807F' },
+          { primary: '#28282A', secondary: '#EBEAE5', muted: '#81807F' },
+          { primary: '#ED008C', secondary: '#E2E417', muted: '#F39393' },
+          { primary: '#EBEAE5', secondary: '#28282A', muted: '#81807F' },
+          { primary: '#28282A', secondary: '#EBEAE5', muted: '#81807F' },
+          { primary: '#1D2795', secondary: '#FEE9E8', muted: '#B0B8C8' },
+        ];
+        var stored = localStorage.getItem('themeIndex');
+        var idx = stored !== null ? parseInt(stored, 10) : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0);
+        var t = themes[idx];
+        var r = document.documentElement;
+        r.style.setProperty('--color-primary', t.primary);
+        r.style.setProperty('--color-secondary', t.secondary);
+        r.style.setProperty('--color-muted', t.muted);
+        document.body.style.backgroundColor = t.primary;
+        document.body.style.color = t.secondary;
+      })();
+    </script>
     <slot />
   </body>
 </html>
