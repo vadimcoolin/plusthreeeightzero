@@ -25,9 +25,7 @@ import Logo from './Logo.astro';
 
 <header class="absolute top-0 left-0 w-full z-50 js-header">
   <nav class="flex items-center justify-between" style={`padding: var(--spacing-page) var(--spacing-page)`}>
-    <a href={`${base}${lang}/`} style={`color: var(--color-secondary)`}>
-      <Logo style="height: var(--spacing-logo); width: auto" />
-    </a>
+    <Logo style="height: var(--spacing-logo); width: auto; color: var(--color-secondary)" />
 
     <div class="hidden md:flex items-center" style={`gap: var(--spacing-header-item-gap)`}>
       {links.map((link) => (
@@ -69,9 +67,7 @@ import Logo from './Logo.astro';
 <aside class="fixed inset-0 z-40 hidden js-mobile-menu" style={`background-color: var(--color-primary)`}>
   <div class="h-full flex flex-col">
     <nav class="flex items-center justify-between" style={`padding: var(--spacing-page) var(--spacing-page)`}>
-      <a href={`${base}${lang}/`} style={`color: var(--color-secondary)`}>
-        <Logo style="height: var(--spacing-logo); width: auto" />
-      </a>
+      <Logo style="height: var(--spacing-logo); width: auto; color: var(--color-secondary)" />
       <div class="flex items-center" style={`gap: var(--spacing-page)`}>
         <button class="js-burger-close relative flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Close menu" style={`color: var(--color-secondary)`}>
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
@@ -173,4 +169,59 @@ import Logo from './Logo.astro';
   burgerToggle?.addEventListener('click', openMenu);
   burgerClose?.addEventListener('click', closeMenu);
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Logo cycling
+  const logoEls = document.querySelectorAll('.js-logo');
+  if (logoEls.length) {
+    const base = logoEls[0].dataset.base;
+    const TOTAL = 16;
+    const cache = {};
+    let stored = localStorage.getItem('logoIndex');
+    let idx = stored !== null ? parseInt(stored, 10) : 0;
+    if (idx < 0 || idx >= TOTAL) idx = 0;
+
+    function styleSvg(container) {
+      const svgEl = container.querySelector('svg');
+      if (svgEl) {
+        svgEl.style.height = '100%';
+        svgEl.style.width = 'auto';
+      }
+    }
+
+    function loadLogo(i) {
+      if (cache[i]) {
+        logoEls.forEach(el => {
+          el.innerHTML = cache[i];
+          styleSvg(el);
+        });
+        return;
+      }
+      const num = String(i + 1).padStart(2, '0');
+      fetch(base + 'logo/logo_state_' + num + '.svg')
+        .then(r => r.text())
+        .then(svg => {
+          cache[i] = svg;
+          logoEls.forEach(el => {
+            el.innerHTML = svg;
+            styleSvg(el);
+          });
+        });
+    }
+
+    loadLogo(idx);
+
+    logoEls.forEach(el => {
+      el.addEventListener('click', () => {
+        idx = (idx + 1) % TOTAL;
+        localStorage.setItem('logoIndex', idx);
+        loadLogo(idx);
+      });
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  }
 </script>

@@ -33,7 +33,8 @@ Output goes to `dist/` (this folder is gitignored and never edited manually).
 plusthreeeightzero/
 ├── .github/workflows/deploy.yml   ← GitHub Actions (auto-deploy on push to main)
 ├── public/                        ← static files (images, SVGs) — copied as-is to dist/
-│   ├── logo_main.svg              ← header logo
+│   ├── logo_main.svg              ← logo fallback (old, kept for reference)
+│   ├── logo/                      ← 16 interactive logo variants (logo_state_01..16.svg)
 │   ├── plus.svg                   ← plus icon (theme toggle + title)
 │   ├── burger.svg                 ← burger menu icon (mobile)
 │   ├── x.svg                      ← close icon (mobile menu)
@@ -71,6 +72,8 @@ plusthreeeightzero/
 - Styles use Tailwind v4 utility classes — no SCSS
 - Layout uses `BaseLayout.astro` — all pages must wrap content in it
 - Header is included on every page
+- Logo: interactive component (`Logo.astro`), cycles through 16 variants on click, persisted in localStorage
+- Logo is NOT a link (home link is only in burger menu via Index nav item)
 - Colors: background `#EBEAE5`, text `#28282A`
 - Font: Inter (weights: 200, 400, 500, 600, 700)
 - Language switcher: active language is `#28282A`, inactive is `#81807F`
