@@ -19,12 +19,14 @@ const links = lang === 'ua'
     ];
 
 const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
+
+import Logo from './Logo.astro';
 ---
 
 <header class="absolute top-0 left-0 w-full z-50 js-header">
   <nav class="flex items-center justify-between" style={`padding: var(--spacing-page) var(--spacing-page)`}>
-    <a href={`${base}${lang}/`}>
-      <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" style="height: var(--spacing-logo)" />
+    <a href={`${base}${lang}/`} style={`color: var(--color-secondary)`}>
+      <Logo style="height: var(--spacing-logo); width: auto" />
     </a>
 
     <div class="hidden md:flex items-center" style={`gap: var(--spacing-header-item-gap)`}>
@@ -38,18 +40,27 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
         <span style="color: var(--color-muted)">/</span>
         <span style={`color: ${lang === 'ua' ? 'var(--color-secondary)' : 'var(--color-muted)'}`}>UA</span>
       </a>
-      <button class="js-theme-toggle hover:opacity-60 transition-opacity" aria-label="Toggle theme">
-        <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo); color: var(--color-secondary)`} />
+      <button class="js-theme-toggle hover:opacity-60 transition-opacity" aria-label="Toggle theme" style={`color: var(--color-secondary)`}>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
+          <path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/>
+        </svg>
       </button>
     </div>
 
     <div class="flex md:hidden items-center" style={`gap: var(--spacing-page)`}>
-      <button class="js-burger-toggle relative flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Toggle menu">
-        <img class="js-burger-icon" src={`${base}burger.svg`} alt="Menu" style={`width: var(--spacing-logo); height: var(--spacing-logo); color: var(--color-secondary)`} />
-        <img class="js-burger-close-icon hidden absolute" src={`${base}x.svg`} alt="Close" style={`width: var(--spacing-logo); height: var(--spacing-logo); color: var(--color-secondary)`} />
+      <button class="js-burger-toggle relative flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Toggle menu" style={`color: var(--color-secondary)`}>
+        <svg class="js-burger-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
+          <path d="M17.7089 7.03333H30V12.4503H17.7089H12.2919H0V7.03333H12.2919H17.7089Z" fill="currentColor"/>
+          <path d="M17.7089 17.8673H30V23.2843H17.7089H12.2919H0V17.8673H12.2919H17.7089Z" fill="currentColor"/>
+        </svg>
+        <svg class="js-burger-close-icon hidden absolute" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
+          <path d="M20.0853 15.9999L29.3564 25.271L25.2705 29.3569L15.9994 20.0858L6.72896 29.3562L2.64376 25.271L11.9142 16.0006L2.64307 6.72944L6.72896 2.64355L16.0001 11.9147L25.2712 2.64355L29.3564 6.72875L20.0853 15.9999Z" fill="currentColor"/>
+        </svg>
       </button>
-      <button class="js-theme-toggle hover:opacity-60 transition-opacity" aria-label="Toggle theme">
-        <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo); color: var(--color-secondary)`} />
+      <button class="js-theme-toggle hover:opacity-60 transition-opacity" aria-label="Toggle theme" style={`color: var(--color-secondary)`}>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
+          <path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/>
+        </svg>
       </button>
     </div>
   </nav>
@@ -58,15 +69,19 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
 <aside class="fixed inset-0 z-40 hidden js-mobile-menu" style={`background-color: var(--color-primary)`}>
   <div class="h-full flex flex-col">
     <nav class="flex items-center justify-between" style={`padding: var(--spacing-page) var(--spacing-page)`}>
-      <a href={`${base}${lang}/`}>
-        <img src={`${base}logo_main.svg`} alt="Plusthreeeightzero" style="height: var(--spacing-logo)" />
+      <a href={`${base}${lang}/`} style={`color: var(--color-secondary)`}>
+        <Logo style="height: var(--spacing-logo); width: auto" />
       </a>
       <div class="flex items-center" style={`gap: var(--spacing-page)`}>
-        <button class="js-burger-close relative flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Close menu">
-          <img src={`${base}x.svg`} alt="Close" style={`width: var(--spacing-logo); height: var(--spacing-logo); color: var(--color-secondary)`} />
+        <button class="js-burger-close relative flex items-center justify-center w-11 h-11 hover:opacity-60 transition-opacity" aria-label="Close menu" style={`color: var(--color-secondary)`}>
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
+            <path d="M20.0853 15.9999L29.3564 25.271L25.2705 29.3569L15.9994 20.0858L6.72896 29.3562L2.64376 25.271L11.9142 16.0006L2.64307 6.72944L6.72896 2.64355L16.0001 11.9147L25.2712 2.64355L29.3564 6.72875L20.0853 15.9999Z" fill="currentColor"/>
+          </svg>
         </button>
-        <button class="js-theme-toggle hover:opacity-60 transition-opacity" aria-label="Toggle theme">
-          <img src={`${base}plus.svg`} alt="+" style={`width: var(--spacing-logo); height: var(--spacing-logo); color: var(--color-secondary)`} />
+        <button class="js-theme-toggle hover:opacity-60 transition-opacity" aria-label="Toggle theme" style={`color: var(--color-secondary)`}>
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={`width: var(--spacing-logo); height: var(--spacing-logo)`}>
+            <path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/>
+          </svg>
         </button>
       </div>
     </nav>
@@ -97,10 +112,10 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
   const themes = [
     { primary: '#EBEAE5', secondary: '#28282A', muted: '#81807F' },
     { primary: '#28282A', secondary: '#EBEAE5', muted: '#81807F' },
-    { primary: '#ED008C', secondary: '#E2E417', muted: '#F39393' },
+    { primary: '#E2E417', secondary: '#ED008C', muted: '#F39393' },
     { primary: '#EBEAE5', secondary: '#28282A', muted: '#81807F' },
     { primary: '#28282A', secondary: '#EBEAE5', muted: '#81807F' },
-    { primary: '#1D2795', secondary: '#FEE9E8', muted: '#B0B8C8' },
+    { primary: '#FEE9E8', secondary: '#1D2795', muted: '#B0B8C8' },
   ];
 
   function getInitialThemeIndex() {

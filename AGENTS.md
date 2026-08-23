@@ -94,8 +94,8 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 |---------|--------------|-------------------|---------|
 | White   | #EBEAE5      | #28282A           | #81807F |
 | Black   | #28282A      | #EBEAE5           | #81807F |
-| Color 1 | #ED008C      | #E2E417           | #F39393 |
-| Color 2 | #1D2795      | #FEE9E8           | #B0B8C8 |
+| Color 1 | #E2E417      | #ED008C           | #F39393 |
+| Color 2 | #FEE9E8      | #1D2795           | #B0B8C8 |
 
 ### CSS Variables
 
@@ -127,10 +127,10 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 - Subtitle: 24px, font-normal
 - Menu items: 16px, font-medium, gap 48px
 - Button text: 20px, font-medium, height 44px, padding-x 64px
-- Title: 132px, uppercase, leading 0.95, all lines left-aligned
+- Title: 132px, uppercase, leading 0.95
   - Line 1: font-extralight (200)
   - Line 2: font-semibold (600)
-  - Line 3: font-semibold (600)
+  - Line 3: font-semibold (600), desktop right-aligned (`md:text-right`), mobile left-aligned
 - Content padding from edges: 24px
 - Logo/icon height: 20px
 - Content aligned to bottom of viewport (`justify-end`)

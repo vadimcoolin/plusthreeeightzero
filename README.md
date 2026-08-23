@@ -40,7 +40,7 @@ Automatic deployment via GitHub Actions on push to `main`.
 
 ```
 ├── public/                  ← static assets (images, SVGs)
-│   ├── logo_main.svg
+│   ├── logo_main.svg        ← logo fallback
 │   ├── plus.svg
 │   ├── burger.svg
 │   ├── x.svg
@@ -51,7 +51,8 @@ Automatic deployment via GitHub Actions on push to `main`.
 │   │   ├── en/index.astro  ← English
 │   │   └── ua/index.astro  ← Ukrainian
 │   ├── components/
-│   │   └── Header.astro
+│   │   ├── Header.astro    ← nav, burger menu, theme toggle
+│   │   └── Logo.astro      ← inline SVG logo (currentColor)
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   └── styles/
@@ -61,3 +62,16 @@ Automatic deployment via GitHub Actions on push to `main`.
 ├── astro.config.mjs
 └── package.json
 ```
+
+## Theme System
+
+6-theme cycle via + button: white → black → color1 → white → black → color2.
+
+Default based on `prefers-color-scheme`. Persisted in `localStorage`. FOUC prevention in `BaseLayout.astro`.
+
+| Theme   | Primary (bg) | Secondary (text) | Muted   |
+|---------|--------------|-------------------|---------|
+| White   | #EBEAE5      | #28282A           | #81807F |
+| Black   | #28282A      | #EBEAE5           | #81807F |
+| Color 1 | #E2E417      | #ED008C           | #F39393 |
+| Color 2 | #FEE9E8      | #1D2795           | #B0B8C8 |
