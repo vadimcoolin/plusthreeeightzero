@@ -35,8 +35,9 @@ plusthreeeightzero/
 ├── public/                        ← static files (images, SVGs) — copied as-is to dist/
 │   ├── logo_main.svg              ← header logo
 │   ├── plus.svg                   ← plus icon (theme toggle + title)
-│   ├── favicon.ico
-│   └── favicon.svg
+│   ├── burger.svg                 ← burger menu icon (mobile)
+│   ├── x.svg                      ← close icon (mobile menu)
+│   └── favicon.svg                ← favicon (plus icon, dark mode aware)
 ├── src/
 │   ├── pages/
 │   │   ├── index.astro            ← Root redirect (→ /en/ or /ua/ by browser lang)
@@ -47,9 +48,9 @@ plusthreeeightzero/
 │   ├── layouts/
 │   │   └── BaseLayout.astro       ← main HTML layout (includes Google Fonts)
 │   ├── components/
-│   │   └── Header.astro           ← navigation + language switcher + theme toggle
+│   │   └── Header.astro           ← navigation + language switcher + theme toggle + burger menu
 │   └── styles/
-│       └── global.css             ← Tailwind import + custom theme (colors, font)
+│       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
 ├── astro.config.mjs               ← Astro config (Tailwind v4 plugin + i18n)
 ├── package.json
 └── dist/                          ← generated build output (NEVER edit manually)
@@ -73,29 +74,53 @@ plusthreeeightzero/
 - Colors: background `#EBEAE5`, text `#28282A`
 - Font: Inter (weights: 200, 400, 500, 600, 700)
 - Language switcher: active language is `#28282A`, inactive is `#81807F`
-- Hero title uses `text-[8.5vw]` (viewport-responsive sizing)
 - Plus icon in title uses `h-[1cap]` (matches cap height of font)
-- Third line of title is right-aligned (`text-right`)
+- Letter spacing: `-0.03em` globally (applied to body)
+- Contact button links to `mailto:ivanrogovchenko@gmail.com`
 
 ## Responsive System
 
 - **Two breakpoints**: `md: 768px`, `xl: 1440px`
 - **Three zones**: mobile (<768), desktop (768–1440), large (>1440)
-- **All values scale fluidly** using `clamp(min, calc(value * 100vw / 1440), max)`
-- **Design reference**: 1440px — all sizes provided for 1440, auto-scaled to 768
-- Fluid CSS variables defined in `src/styles/global.css` via `@theme`
+- **Desktop (768+)**: all values scale fluidly using `max(min, vw)` — no upper cap, scales to 4K
+- **Mobile (<768)**: separate `@media` block with `max(min, vw)` — scales fluidly down from 767
+- **Design reference**: 1440px — all sizes provided for 1440, auto-scaled
+- Fluid CSS variables defined in `src/styles/global.css` via `@theme` + `@media`
 
-## Typography Rules (at 1440px, scale fluidly)
+## Typography Rules (at 1440px desktop / 767px mobile, scale fluidly)
+
+### Desktop (768–1440px+)
 
 - Subtitle: 24px, font-normal
 - Menu items: 16px, font-medium, gap 48px
 - Button text: 20px, font-medium, height 44px, padding-x 64px
-- Title: 140px, uppercase, leading 0.95
+- Title: 132px, uppercase, leading 0.95, all lines left-aligned
   - Line 1: font-extralight (200)
   - Line 2: font-semibold (600)
-  - Line 3: font-semibold (600), text-right
+  - Line 3: font-semibold (600)
 - Content padding from edges: 24px
 - Logo/icon height: 20px
+- Content aligned to bottom of viewport (`justify-end`)
+
+### Mobile (<768px)
+
+- Subtitle: 32px
+- Title: 96px (with line-height 0.85)
+- Button text: 32px, height 64px, padding-x 96px
+- Logo/icon height: 32px
+- Content centered vertically (`justify-center`)
+- Burger menu with full-screen overlay
+- Menu items: 96px, font-extralight, left-aligned
+- Language switcher in burger: font-semibold, at bottom
+
+## Burger Menu (mobile <768px)
+
+- Header: logo + burger icon + plus icon
+- Burger opens full-screen overlay with same header (logo + X + plus)
+- Main header hides when menu is open
+- X icon closes menu, same position as burger icon
+- Menu items centered vertically, language switcher at bottom
+- Menu items close menu on click
 
 ## Documentation
 

@@ -4,17 +4,18 @@ Static agency website built with Astro + Tailwind CSS v4. Bilingual: English + U
 
 ## URLs
 
-- **English** (default): https://vadimcoolin.github.io/plusthreeeightzero/
-- **Ukrainian**: https://vadimcoolin.github.io/plusthreeeightzero/uk/
+- **English** (default): https://coolin.cc/plusthreeeightzero/en/
+- **Ukrainian**: https://coolin.cc/plusthreeeightzero/ua/
+- Root `/` redirects based on browser language
 
 ## Development
 
 ```bash
 npm install
-npm run dev
+astro dev --background
 ```
 
-Open http://localhost:4321
+Manage server: `astro dev stop`, `astro dev status`, `astro dev logs`.
 
 ## Build
 
@@ -41,12 +42,14 @@ Automatic deployment via GitHub Actions on push to `main`.
 ├── public/                  ← static assets (images, SVGs)
 │   ├── logo_main.svg
 │   ├── plus.svg
-│   ├── favicon.ico
+│   ├── burger.svg
+│   ├── x.svg
 │   └── favicon.svg
 ├── src/
 │   ├── pages/
-│   │   ├── index.astro     ← English (root)
-│   │   └── uk/             ← Ukrainian
+│   │   ├── index.astro     ← Root redirect (browser lang)
+│   │   ├── en/index.astro  ← English
+│   │   └── ua/index.astro  ← Ukrainian
 │   ├── components/
 │   │   └── Header.astro
 │   ├── layouts/
@@ -54,7 +57,7 @@ Automatic deployment via GitHub Actions on push to `main`.
 │   └── styles/
 │       └── global.css
 ├── .github/workflows/
-│   └── deploy.yml          ← GitHub Actions auto-deploy
+│   └── deploy.yml
 ├── astro.config.mjs
 └── package.json
 ```

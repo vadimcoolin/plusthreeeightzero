@@ -27,14 +27,14 @@
   :root {
     --spacing-page: max(12px, 3.125vw);
     --spacing-logo: max(16px, 4.726vw);
-    --spacing-menu-gap: max(2px, 0.521vw);
+    --spacing-menu-gap: max(8px, 2.083vw);
     --spacing-header-gap: max(8px, 2.083vw);
     --spacing-switcher-gap: max(1px, 0.26vw);
 
     --font-size-subtitle: max(16px, 4.167vw);
     --font-size-title: max(53px, 13.823vw);
     --font-size-menu: max(8px, 2.083vw);
-    --font-size-menu-mobile: max(48px, 14.18vw);
+    --font-size-menu-mobile: max(32px, 9.453vw);
     --font-size-button: max(16px, 4.167vw);
 
     --height-header: max(24px, 6.25vw);
