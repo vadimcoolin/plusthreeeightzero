@@ -1,0 +1,68 @@
+---
+interface Service {
+  title: string;
+  items: string[];
+  number: string;
+}
+interface Props {
+  services: Service[];
+}
+const { services } = Astro.props;
+---
+<div class="services-list" style={`margin-top: var(--spacing-section-gap)`}>
+  {services.map((service, i) => (
+    <div class="service-row" style={i > 0 ? 'margin-top: 0' : ''}>
+      <div class="service-line"></div>
+      <div class="grid grid-cols-1 md:grid-cols-12 items-start" style={`gap: var(--spacing-page)`}>
+        <div class="md:col-span-6">
+          <h3 class="font-medium" style={`font-size: var(--font-size-h3); line-height: 1`}>{service.title}</h3>
+        </div>
+        <div class="md:col-span-5">
+          <ul class="service-list" style={`font-size: var(--font-size-service-list); color: var(--color-secondary); font-weight: 400; line-height: 1`}>
+            {service.items.map(item => (
+              <li style={`margin-bottom: 1em`}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="md:col-span-1 flex justify-end service-number">
+          <span class="font-medium" style={`font-size: var(--font-size-service-number); color: var(--color-secondary); line-height: 1`}>{service.number}</span>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+<style>
+  .service-row {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+  .service-line {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid var(--color-secondary);
+    margin-bottom: 1.5em;
+  }
+  .service-line::before,
+  .service-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 8px;
+    background: var(--color-secondary);
+  }
+  .service-line::before {
+    left: 0;
+  }
+  .service-line::after {
+    right: 0;
+  }
+  @media (max-width: 767px) {
+    .service-number {
+      justify-content: flex-start !important;
+    }
+    .service-list {
+      margin-top: 1em;
+    }
+  }
+</style>

@@ -38,6 +38,7 @@ plusthreeeightzero/
 │   ├── plus.svg                   ← plus icon (theme toggle + title)
 │   ├── burger.svg                 ← burger menu icon (mobile)
 │   ├── x.svg                      ← close icon (mobile menu)
+│   ├── ptez_showreel.mp4          ← showreel video (loop, click to toggle audio)
 │   └── favicon.svg                ← favicon (plus icon, dark mode aware)
 ├── src/
 │   ├── pages/
@@ -49,7 +50,12 @@ plusthreeeightzero/
 │   ├── layouts/
 │   │   └── BaseLayout.astro       ← main HTML layout (includes Google Fonts)
 │   ├── components/
-│   │   └── Header.astro           ← navigation + language switcher + theme toggle + burger menu
+│   │   ├── Header.astro           ← navigation + language switcher + theme toggle + burger menu
+│   │   ├── Logo.astro             ← interactive logo cycling (16 variants)
+│   │   ├── Showreel.astro         ← full-width video section (loop, click to toggle audio)
+│   │   ├── Services.astro         ← services section (breadcrumbs + H2 oversize text)
+│   │   ├── ServicesList.astro     ← 3 service rows with lines and numbers
+│   │   └── ServicesCta.astro      ← CTA block (text + button, right-aligned)
 │   └── styles/
 │       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
 ├── astro.config.mjs               ← Astro config (Tailwind v4 plugin + i18n)
@@ -134,6 +140,14 @@ The cycle depends on browser preference (`prefers-color-scheme`):
   - Line 1: font-extralight (200)
   - Line 2: font-semibold (600)
   - Line 3: font-semibold (600), desktop right-aligned (`md:text-right`), mobile left-aligned
+- H2 (Services): 64px, font-medium, leading 1.1, text-indent 3em
+  - First sentence: secondary color
+  - Second sentence: muted color
+- Breadcrumbs: 12px, font-normal, plus icon 22px
+- Services List: 3 sections with horizontal line (1px) + vertical tails (8px)
+  - Title: H2 size, font-medium
+  - Items: 18px, font-normal, muted color
+  - Number: 32px, font-medium
 - Content padding from edges: 24px
 - Logo/icon height: 20px
 - Content aligned to bottom of viewport (`justify-end`)

@@ -1,0 +1,22 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+<div class="showreel" style={`padding: 0 var(--spacing-page); margin-top: var(--spacing-block-gap)`}>
+  <video
+    class="w-full object-cover cursor-pointer"
+    style="aspect-ratio: 16/9;"
+    src={`${base}ptez_showreel.mp4`}
+    preload="auto"
+    autoplay
+    loop
+    muted
+    playsinline
+  ></video>
+</div>
+<script is:inline>
+  document.querySelectorAll('.showreel video').forEach(function(video) {
+    video.addEventListener('click', function() {
+      video.muted = !video.muted;
+    });
+  });
+</script>
