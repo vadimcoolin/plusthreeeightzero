@@ -104,7 +104,7 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 | White   | #EBEAE5      | #28282A           | #81807F |
 | Black   | #28282A      | #EBEAE5           | #81807F |
 | Color 1 | #E2E417      | #ED008C           | #F39393 |
-| Color 2 | #FEE9E8      | #1D2795           | #B0B8C8 |
+| Color 2 | #FEE9E8      | #1D2795           | #696DB9 |
 
 ### CSS Variables
 
