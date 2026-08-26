@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Showreel from '../../components/Showreel.astro';
 import Services from '../../components/Services.astro';
+import About from '../../components/About.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -49,6 +50,14 @@ const base = import.meta.env.BASE_URL;
       ]}
       ctaText="Хочете синхронізувати бренд та масштабуватися впевнено? Розпочніть розмову сьогодні."
       ctaButtonText="Почати"
+    />
+    <About
+      breadcrumbs={[
+        { label: 'Головна', href: '#index' },
+        { label: 'Про нас' },
+      ]}
+      textFirst='Ми не приходимо, щоб «зробити красиво.»'
+      textSecond="Ми інтегруємося у вашу команду, привносимо ясність у складні ідеї та будуємо бренд разом із вами — щоб, коли ми закінчимо, ви могли рухатися далі самостійно."
     />
   </main>
 </BaseLayout>

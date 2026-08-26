@@ -69,9 +69,9 @@ Automatic deployment via GitHub Actions on push to `main`.
 
 Default based on `prefers-color-scheme`. Persisted in `localStorage`. FOUC prevention in `BaseLayout.astro`.
 
-| Theme   | Primary (bg) | Secondary (text) | Muted   |
-|---------|--------------|-------------------|---------|
-| White   | #EBEAE5      | #28282A           | #81807F |
-| Black   | #28282A      | #EBEAE5           | #81807F |
-| Color 1 | #E2E417      | #ED008C           | #F39393 |
-| Color 2 | #FEE9E8      | #1D2795           | #696DB9 |
+| Theme   | Primary (bg) | Secondary BG | Secondary (text) | Muted   |
+|---------|--------------|--------------|-------------------|---------|
+| White   | #EBEAE5      | #FFFFFF      | #28282A           | #81807F |
+| Black   | #28282A      | #0F0F11      | #EBEAE5           | #81807F |
+| Color 1 | #E2E417      | #FEFFA8      | #ED008C           | #F39393 |
+| Color 2 | #FFDED2      | #FEE9E8      | #1D2795           | #696DB9 |

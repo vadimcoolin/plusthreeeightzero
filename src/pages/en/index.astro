@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Showreel from '../../components/Showreel.astro';
 import Services from '../../components/Services.astro';
+import About from '../../components/About.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -49,6 +50,14 @@ const base = import.meta.env.BASE_URL;
       ]}
       ctaText="Looking to align your brand and scale with confidence? Start the conversation today."
       ctaButtonText="Start Here"
+    />
+    <About
+      breadcrumbs={[
+        { label: 'Index', href: '#index' },
+        { label: 'About' },
+      ]}
+      textFirst='We don't show up to "make things pretty."'
+      textSecond="We embed into your team, bring clarity to complex ideas, and build the brand together with you — so that when we're done, you can move forward independently."
     />
   </main>
 </BaseLayout>

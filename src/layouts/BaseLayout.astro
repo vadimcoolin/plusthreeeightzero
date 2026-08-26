@@ -27,18 +27,19 @@ const { title, lang } = Astro.props;
     <script is:inline>
       (function() {
         var themes = [
-          { primary: '#EBEAE5', secondary: '#28282A', muted: '#81807F' },
-          { primary: '#28282A', secondary: '#EBEAE5', muted: '#81807F' },
-          { primary: '#E2E417', secondary: '#ED008C', muted: '#F39393' },
-          { primary: '#EBEAE5', secondary: '#28282A', muted: '#81807F' },
-          { primary: '#28282A', secondary: '#EBEAE5', muted: '#81807F' },
-          { primary: '#FEE9E8', secondary: '#1D2795', muted: '#696DB9' },
+          { primary: '#EBEAE5', secondaryBg: '#FFFFFF', secondary: '#28282A', muted: '#81807F' },
+          { primary: '#28282A', secondaryBg: '#0F0F11', secondary: '#EBEAE5', muted: '#81807F' },
+          { primary: '#E2E417', secondaryBg: '#FEFFA8', secondary: '#ED008C', muted: '#F39393' },
+          { primary: '#EBEAE5', secondaryBg: '#FFFFFF', secondary: '#28282A', muted: '#81807F' },
+          { primary: '#28282A', secondaryBg: '#0F0F11', secondary: '#EBEAE5', muted: '#81807F' },
+          { primary: '#FFDED2', secondaryBg: '#FEE9E8', secondary: '#1D2795', muted: '#696DB9' },
         ];
         var stored = localStorage.getItem('themeIndex');
         var idx = stored !== null ? parseInt(stored, 10) : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0);
         var t = themes[idx];
         var r = document.documentElement;
         r.style.setProperty('--color-primary', t.primary);
+        r.style.setProperty('--color-secondary-bg', t.secondaryBg);
         r.style.setProperty('--color-secondary', t.secondary);
         r.style.setProperty('--color-muted', t.muted);
         document.body.style.backgroundColor = t.primary;

@@ -55,7 +55,8 @@ plusthreeeightzero/
 │   │   ├── Showreel.astro         ← full-width video section (loop, click to toggle audio)
 │   │   ├── Services.astro         ← services section (breadcrumbs + H2 oversize text)
 │   │   ├── ServicesList.astro     ← 3 service rows with lines and numbers
-│   │   └── ServicesCta.astro      ← CTA block (text + button, right-aligned)
+│   │   ├── ServicesCta.astro      ← CTA block (text + button, right-aligned)
+│   │   └── About.astro            ← about section (breadcrumbs + H2)
 │   └── styles/
 │       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
 ├── astro.config.mjs               ← Astro config (Tailwind v4 plugin + i18n)
@@ -99,17 +100,18 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 
 ### Color Schemes
 
-| Theme   | Primary (bg) | Secondary (text) | Muted   |
-|---------|--------------|-------------------|---------|
-| White   | #EBEAE5      | #28282A           | #81807F |
-| Black   | #28282A      | #EBEAE5           | #81807F |
-| Color 1 | #E2E417      | #ED008C           | #F39393 |
-| Color 2 | #FEE9E8      | #1D2795           | #696DB9 |
+| Theme   | Primary (bg) | Secondary BG | Secondary (text) | Muted   |
+|---------|--------------|--------------|-------------------|---------|
+| White   | #EBEAE5      | #FFFFFF      | #28282A           | #81807F |
+| Black   | #28282A      | #0F0F11      | #EBEAE5           | #81807F |
+| Color 1 | #E2E417      | #FEFFA8      | #ED008C           | #F39393 |
+| Color 2 | #FFDED2      | #FEE9E8      | #1D2795           | #696DB9 |
 
 ### CSS Variables
 
 - `--color-primary` — background
 - `--color-secondary` — text
+- `--color-secondary-bg` — secondary background
 - `--color-muted` — inactive/muted elements
 
 ### Implementation
