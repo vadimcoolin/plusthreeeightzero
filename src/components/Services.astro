@@ -13,7 +13,7 @@ interface Props {
 const { breadcrumbs, textFirst, textSecond, services, ctaText, ctaButtonText } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
-<section id="services" class="w-full" style={`padding: var(--spacing-page); margin-top: var(--spacing-block-gap)`}>
+<section id="services" class="w-full" style={`padding: var(--spacing-block-gap) var(--spacing-page) var(--spacing-section-gap)`}>
   <div class="grid grid-cols-1 md:grid-cols-4" style={`gap: var(--spacing-page)`}>
     <div class="md:col-span-1 flex items-start">
       <nav class="flex items-center" style={`font-size: var(--font-size-breadcrumbs); font-weight: 400`}>

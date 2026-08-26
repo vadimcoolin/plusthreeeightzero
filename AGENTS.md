@@ -48,7 +48,7 @@ plusthreeeightzero/
 │   │   └── ua/
 │   │       └── index.astro        ← Ukrainian homepage (/ua/)
 │   ├── layouts/
-│   │   └── BaseLayout.astro       ← main HTML layout (includes Google Fonts)
+│   │   └── BaseLayout.astro       ← main HTML layout (includes Inter font from rsms.me)
 │   ├── components/
 │   │   ├── Header.astro           ← navigation + language switcher + theme toggle + burger menu
 │   │   ├── Logo.astro             ← interactive logo cycling (16 variants)
@@ -82,11 +82,31 @@ plusthreeeightzero/
 - Logo: interactive component (`Logo.astro`), cycles through 16 variants on click, persisted in localStorage
 - Logo is NOT a link (home link is only in burger menu via Index nav item)
 - Colors: background `#EBEAE5`, text `#28282A`
-- Font: Inter (weights: 200, 400, 500, 600, 700)
+- Font: Inter 4.x via rsms.me CDN (variable font, weights: 100–900)
+- Font features: `font-feature-settings: 'liga' 1, 'calt' 1, 'ss03' 1` (round quotes & commas)
 - Language switcher: active language is `#28282A`, inactive is `#81807F`
 - Plus icon in title uses `h-[1cap]` (matches cap height of font)
-- Letter spacing: `-0.03em` globally (applied to body)
+- Letter spacing: `-0.05em` globally (applied to body)
 - Contact button links to `mailto:ivanrogovchenko@gmail.com`
+
+## Spacing System
+
+Spacing between sections uses **padding** (not margin) so that the gap color matches the section's background.
+
+### Variables
+
+| Variable | Desktop (1440px) | Mobile (767px) | Usage |
+|----------|-----------------|----------------|-------|
+| `--spacing-block-gap` | 124px | 62px | Top padding of primary-bg sections (before content) |
+| `--spacing-section-gap` | 96px | 48px | Bottom padding of primary-bg sections / top padding of secondary-bg sections |
+| `--spacing-end` | 96px | 48px | Bottom padding of the last section on page |
+| `--spacing-page` | 24px | 24px | Left/right padding (content from edges) |
+
+### How It Works
+
+- **Primary-bg sections** (Hero, Showreel, Services): `padding: var(--spacing-block-gap) var(--spacing-page) var(--spacing-section-gap)` — top 124px, bottom 96px, sides 24px
+- **Secondary-bg sections** (About): `padding: var(--spacing-section-gap) var(--spacing-page) var(--spacing-end)` — top 96px, bottom 96px, sides 24px + `background-color: var(--color-secondary-bg)`
+- The About section has a different background color, so spacing before/after it uses that color via padding
 
 ## Theme System
 
@@ -145,6 +165,7 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 - H2 (Services): 64px, font-medium, leading 1.1, text-indent 3em
   - First sentence: secondary color
   - Second sentence: muted color
+- H2 (About): same as Services, but first sentence muted, second secondary
 - Breadcrumbs: 12px, font-normal, plus icon 22px
 - Services List: 3 sections with horizontal line (1px) + vertical tails (8px)
   - Title: H2 size, font-medium

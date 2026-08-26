@@ -6,7 +6,7 @@ interface Props {
 }
 const { breadcrumbs, textFirst, textSecond } = Astro.props;
 ---
-<section id="about" class="w-full" style={`padding: var(--spacing-page); margin-top: var(--spacing-block-gap); background-color: var(--color-secondary-bg)`}>
+<section id="about" class="w-full" style={`padding: var(--spacing-section-gap) var(--spacing-page) var(--spacing-end); background-color: var(--color-secondary-bg)`}>
   <div class="grid grid-cols-1 md:grid-cols-4" style={`gap: var(--spacing-page)`}>
     <div class="md:col-span-1 flex items-start">
       <nav class="flex items-center" style={`font-size: var(--font-size-breadcrumbs); font-weight: 400`}>

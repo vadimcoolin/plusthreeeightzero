@@ -26,6 +26,7 @@
 
   --spacing-block-gap: max(62px, 8.611vw);
   --spacing-section-gap: max(48px, 6.667vw);
+  --spacing-end: max(48px, 6.667vw);
 
   --height-header: max(48px, 4.444vw);
   --height-button: max(22px, 3.056vw);
@@ -53,6 +54,7 @@
 
     --spacing-block-gap: max(31px, 8.158vw);
     --spacing-section-gap: max(24px, 6.316vw);
+    --spacing-end: max(24px, 6.316vw);
 
     --height-header: max(24px, 6.25vw);
     --height-button: max(32px, 8.341vw);
@@ -64,10 +66,17 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1, 'ss03' 1;
   background-color: var(--color-primary);
   color: var(--color-secondary);
   letter-spacing: -0.05em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s, color 0.3s;
+}
+
+@supports (font-variation-settings: normal) {
+  html, body {
+    font-family: 'InterVariable', 'Inter', sans-serif;
+  }
 }

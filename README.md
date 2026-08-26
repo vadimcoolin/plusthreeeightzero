@@ -33,14 +33,16 @@ Automatic deployment via GitHub Actions on push to `main`.
 
 - [Astro](https://astro.build) — static site generator
 - [Tailwind CSS v4](https://tailwindcss.com) — utility-first CSS
-- [Inter](https://fonts.google.com/specimen/Inter) — font (via Google Fonts)
+- [Inter](https://rsms.me/inter/) — font (via rsms.me CDN, variable font with OpenType features)
 - [GitHub Actions](https://docs.github.com/en/actions) — auto-deploy to GitHub Pages
 
 ## Project Structure
 
 ```
 ├── public/                  ← static assets (images, SVGs)
+│   ├── logo/                ← 16 interactive logo variants
 │   ├── logo_main.svg        ← logo fallback
+│   ├── ptez_showreel.mp4    ← showreel video
 │   ├── plus.svg
 │   ├── burger.svg
 │   ├── x.svg
@@ -52,7 +54,12 @@ Automatic deployment via GitHub Actions on push to `main`.
 │   │   └── ua/index.astro  ← Ukrainian
 │   ├── components/
 │   │   ├── Header.astro    ← nav, burger menu, theme toggle
-│   │   └── Logo.astro      ← inline SVG logo (currentColor)
+│   │   ├── Logo.astro      ← interactive logo cycling
+│   │   ├── Showreel.astro  ← video section
+│   │   ├── Services.astro  ← services section
+│   │   ├── ServicesList.astro ← service rows
+│   │   ├── ServicesCta.astro  ← CTA block
+│   │   └── About.astro     ← about section
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   └── styles/
