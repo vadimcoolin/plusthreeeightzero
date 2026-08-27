@@ -1,5 +1,6 @@
 ---
 import AboutStats from './AboutStats.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
 
 interface Props {
   breadcrumbs: { label: string; href?: string }[];
@@ -12,21 +13,7 @@ const { breadcrumbs, textFirst, textSecond, stats } = Astro.props;
 <section id="about" class="w-full section-gap-before" style={`background-color: var(--color-secondary-bg)`}>
   <div class="grid grid-cols-1 md:grid-cols-4" style={`gap: var(--spacing-page)`}>
     <div class="md:col-span-1 flex items-start">
-      <nav class="flex items-center" style={`font-size: var(--font-size-breadcrumbs); font-weight: 400`}>
-        <svg width="22" height="22" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0">
-          <path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/>
-        </svg>
-        {breadcrumbs.map((crumb, i) => (
-          <span class="flex items-center" style={i === 0 ? 'margin-left: 24px' : ''}>
-            {i > 0 && <span style={`color: var(--color-muted); padding: 0 12px`}>/</span>}
-            {crumb.href ? (
-              <a href={crumb.href} style={`color: var(--color-muted)`} class="hover:text-[var(--color-secondary)] transition-colors">{crumb.label}</a>
-            ) : (
-              <span style={`color: var(--color-secondary); text-decoration: underline; text-underline-offset: 0.2em`}>{crumb.label}</span>
-            )}
-          </span>
-        ))}
-      </nav>
+      <Breadcrumbs items={breadcrumbs} />
     </div>
     <div class="md:col-span-3 mobile-gap-before">
       <h2 class="font-medium leading-[1.1]" style={`font-size: var(--font-size-h2); text-indent: 3em`}>

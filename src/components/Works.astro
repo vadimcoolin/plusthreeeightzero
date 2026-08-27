@@ -1,5 +1,6 @@
 ---
 import WorksItem from './WorksItem.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
 
 interface Project {
   image: string;
@@ -17,16 +18,10 @@ const { projects } = Astro.props;
     <h2 class="font-medium leading-[1.1]" style={`font-size: var(--font-size-h2); color: var(--color-secondary)`}>
       Selected projects
     </h2>
-    <nav class="works-breadcrumbs" style={`font-size: var(--font-size-breadcrumbs); font-weight: 400`}>
-      <svg width="22" height="22" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0">
-        <path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/>
-      </svg>
-      <span class="flex items-center" style={`margin-left: 24px`}>
-        <a href="#index" style={`color: var(--color-muted); text-decoration: underline; text-underline-offset: 0.2em`} class="hover:text-[var(--color-secondary)] transition-colors">Index</a>
-        <span style={`color: var(--color-muted); padding: 0 12px`}>/</span>
-        <span style={`color: var(--color-secondary); text-decoration: underline; text-underline-offset: 0.2em`}>Works</span>
-      </span>
-    </nav>
+    <Breadcrumbs items={[
+      { label: 'Index', href: '#index' },
+      { label: 'Works' }
+    ]} />
   </div>
   <div class="works-list">
     {projects.map((project) => (
@@ -47,10 +42,6 @@ const { projects } = Astro.props;
     align-items: flex-start;
     margin-bottom: calc(var(--spacing-section-gap) / 4);
   }
-  .works-breadcrumbs {
-    display: flex;
-    align-items: center;
-  }
   .works-list {
     display: flex;
     flex-direction: column;
@@ -60,9 +51,6 @@ const { projects } = Astro.props;
     .works-header {
       flex-direction: column;
       gap: var(--spacing-page);
-    }
-    .works-breadcrumbs {
-      order: -1;
     }
   }
 </style>
