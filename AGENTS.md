@@ -56,7 +56,11 @@ plusthreeeightzero/
 │   │   ├── Services.astro         ← services section (breadcrumbs + H2 oversize text)
 │   │   ├── ServicesList.astro     ← 3 service rows with lines and numbers
 │   │   ├── ServicesCta.astro      ← CTA block (text + button, right-aligned)
-│   │   └── About.astro            ← about section (breadcrumbs + H2)
+│   │   ├── About.astro            ← about section (breadcrumbs + H2)
+│   │   ├── AboutStats.astro       ← 4 stat rows with + icons and large text
+│   │   ├── HoverTable.astro       ← 5-row table with hover effect (bg black, text white)
+│   │   ├── PartnerSection.astro   ← 2-column: large H2 left, 5 text lines right
+│   │   └── AboutCta.astro         ← CTA block for About section (text + button)
 │   └── styles/
 │       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
 ├── astro.config.mjs               ← Astro config (Tailwind v4 plugin + i18n)
@@ -101,6 +105,11 @@ Spacing between sections uses **padding** (not margin) so that the gap color mat
 | `--spacing-section-gap` | 96px | 48px | Bottom padding of primary-bg sections / top padding of secondary-bg sections |
 | `--spacing-end` | 96px | 48px | Bottom padding of the last section on page |
 | `--spacing-page` | 24px | 24px | Left/right padding (content from edges) |
+
+### CSS Classes
+
+- `.section-gap-before` — desktop: `padding-top: var(--spacing-section-gap)` (96px), mobile: `padding-top: var(--spacing-block-gap)` (62px). Used for "Why Plus380?", PartnerSection, About sections
+- `.mobile-gap-before` — mobile only: `margin-top: var(--spacing-page)` (12px). Small spacer before text blocks on mobile (Services H2, About H2, CTAs, PartnerSection)
 
 ### How It Works
 

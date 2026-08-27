@@ -52,9 +52,9 @@
     --font-size-service-list: max(10px, 2.632vw);
     --font-size-service-number: max(16px, 4.211vw);
 
-    --spacing-block-gap: max(31px, 8.158vw);
-    --spacing-section-gap: max(24px, 6.316vw);
-    --spacing-end: max(24px, 6.316vw);
+    --spacing-block-gap: max(62px, 16.316vw);
+    --spacing-section-gap: max(48px, 12.632vw);
+    --spacing-end: max(48px, 12.632vw);
 
     --height-header: max(24px, 6.25vw);
     --height-button: max(32px, 8.341vw);
@@ -78,5 +78,17 @@ html, body {
 @supports (font-variation-settings: normal) {
   html, body {
     font-family: 'InterVariable', 'Inter', sans-serif;
+  }
+}
+
+.section-gap-before {
+  padding: var(--spacing-section-gap) var(--spacing-page) 0;
+}
+@media (max-width: 767px) {
+  .section-gap-before {
+    padding-top: var(--spacing-block-gap);
+  }
+  .mobile-gap-before {
+    margin-top: var(--spacing-page);
   }
 }

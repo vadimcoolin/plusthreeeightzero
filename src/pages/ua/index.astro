@@ -4,6 +4,9 @@ import Header from '../../components/Header.astro';
 import Showreel from '../../components/Showreel.astro';
 import Services from '../../components/Services.astro';
 import About from '../../components/About.astro';
+import HoverTable from '../../components/HoverTable.astro';
+import PartnerSection from '../../components/PartnerSection.astro';
+import AboutCta from '../../components/AboutCta.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -56,8 +59,47 @@ const base = import.meta.env.BASE_URL;
         { label: 'Головна', href: '#index' },
         { label: 'Про нас' },
       ]}
-      textFirst='Ми не приходимо, щоб «зробити красиво.»'
+      textFirst="Ми не приходимо, щоб «зробити красиво.»"
       textSecond="Ми інтегруємося у вашу команду, привносимо ясність у складні ідеї та будуємо бренд разом із вами — щоб, коли ми закінчимо, ви могли рухатися далі самостійно."
+      stats={[
+        { value: "двадцять п'ять", label: 'років досвіду' },
+        { value: 'чотирнадцять', label: 'галузей обслуговано' },
+        { value: 'шість', label: 'глобальних партнерств' },
+        { value: 'дванадцять', label: 'завершених проєктів' },
+      ]}
     />
+    <section class="w-full section-gap-before" style={`background-color: var(--color-secondary-bg)`}>
+      <div class="grid grid-cols-1 md:grid-cols-4" style={`gap: var(--spacing-page)`}>
+        <div class="md:col-span-1"></div>
+        <div class="md:col-span-3">
+          <h2 class="font-medium leading-[1.1]" style={`font-size: var(--font-size-h2); text-indent: 3em`}>
+            <span style={`color: var(--color-muted)`}>Чому Plus380? </span><span style={`color: var(--color-secondary)`}>Бренд — це не просто зовнішній вигляд — це можливість. Ось що робить нашу співпрацю особливою.</span>
+          </h2>
+        </div>
+      </div>
+      <HoverTable rows={[
+        { number: '+1', text: 'Гібридний досвід: внутрішній досвід + мислення засновника' },
+        { number: '+2', text: 'Підхід, орієнтований на бізнес: розуміння GTM, продажів та залучення коштів' },
+        { number: '+3', text: 'Ясність для складних продуктів: перетворення технологій на прості наративи' },
+        { number: '+4', text: 'Посилення команди: ваш бренд стає робочим інструментом, а не залежністю' },
+        { number: '+5', text: 'Результати, які мають значення: зрілість для інвесторів, ясність для клієнтів, довіра для талантів' }
+      ]} />
+    </section>
+    <div style={`background-color: var(--color-secondary-bg)`}>
+      <PartnerSection
+        textLeft="Ми працюємо з командами на ранніх стадіях та в стадії масштабування, яким потрібен бренд, що підтримує продажі, залучення коштів та міжнародне зростання."
+        itemsRight={[
+          'Pre-seed → Series A: перші основи бренду',
+          'Series A → B: ребрендинг для масштабування',
+          'Засновники та C-level активно залучені до продажів',
+          'Складні продукти, які потребують спрощення',
+          'Компанії зі Східної Європи, орієнтовані на ЄС чи США'
+        ]}
+      />
+      <AboutCta
+        text="Потрібен дизайнер-партнер, який зміцнить ваш бренд і вашу команду? Зв'яжіться з нами, і почнемо."
+        buttonText="Build With Us"
+      />
+    </div>
   </main>
 </BaseLayout>

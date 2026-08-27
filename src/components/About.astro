@@ -1,12 +1,15 @@
 ---
+import AboutStats from './AboutStats.astro';
+
 interface Props {
   breadcrumbs: { label: string; href?: string }[];
   textFirst: string;
   textSecond: string;
+  stats?: { value: string; label: string }[];
 }
-const { breadcrumbs, textFirst, textSecond } = Astro.props;
+const { breadcrumbs, textFirst, textSecond, stats } = Astro.props;
 ---
-<section id="about" class="w-full" style={`padding: var(--spacing-section-gap) var(--spacing-page) var(--spacing-end); background-color: var(--color-secondary-bg)`}>
+<section id="about" class="w-full section-gap-before" style={`background-color: var(--color-secondary-bg)`}>
   <div class="grid grid-cols-1 md:grid-cols-4" style={`gap: var(--spacing-page)`}>
     <div class="md:col-span-1 flex items-start">
       <nav class="flex items-center" style={`font-size: var(--font-size-breadcrumbs); font-weight: 400`}>
@@ -25,10 +28,11 @@ const { breadcrumbs, textFirst, textSecond } = Astro.props;
         ))}
       </nav>
     </div>
-    <div class="md:col-span-3">
+    <div class="md:col-span-3 mobile-gap-before">
       <h2 class="font-medium leading-[1.1]" style={`font-size: var(--font-size-h2); text-indent: 3em`}>
         <span style={`color: var(--color-muted)`}>{textFirst} </span><span style={`color: var(--color-secondary)`}>{textSecond}</span>
       </h2>
     </div>
   </div>
+  {stats && <AboutStats stats={stats} />}
 </section>
