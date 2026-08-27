@@ -49,7 +49,7 @@
     --font-size-h2: max(24px, 6.316vw);
     --font-size-h3: max(18px, 4.737vw);
     --font-size-breadcrumbs: max(10px, 2.632vw);
-    --font-size-service-list: max(10px, 2.632vw);
+    --font-size-service-list: max(24px, 6.316vw);
     --font-size-service-number: max(16px, 4.211vw);
 
     --spacing-block-gap: max(62px, 16.316vw);

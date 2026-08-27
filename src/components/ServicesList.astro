@@ -9,7 +9,7 @@ interface Props {
 }
 const { services } = Astro.props;
 ---
-<div class="services-list" style={`margin-top: var(--spacing-section-gap)`}>
+<div class="services-list" style={`margin-top: var(--spacing-page)`}>
   {services.map((service, i) => (
     <div class="service-row" style={i > 0 ? 'margin-top: 0' : ''}>
       <div class="service-line"></div>
