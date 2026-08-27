@@ -1,0 +1,68 @@
+---
+import WorksItem from './WorksItem.astro';
+
+interface Project {
+  image: string;
+  title: string;
+  tags: string[];
+  link: string;
+}
+interface Props {
+  projects: Project[];
+}
+const { projects } = Astro.props;
+---
+<section id="works" class="w-full" style={`padding: var(--spacing-block-gap) var(--spacing-page) 0`}>
+  <div class="works-header">
+    <h2 class="font-medium leading-[1.1]" style={`font-size: var(--font-size-h2); color: var(--color-secondary)`}>
+      Selected projects
+    </h2>
+    <nav class="works-breadcrumbs" style={`font-size: var(--font-size-breadcrumbs); font-weight: 400`}>
+      <svg width="22" height="22" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0">
+        <path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/>
+      </svg>
+      <span class="flex items-center" style={`margin-left: 24px`}>
+        <span style={`color: var(--color-muted)`}>Index</span>
+        <span style={`color: var(--color-muted); padding: 0 12px`}>/</span>
+        <span style={`color: var(--color-muted)`}>Works</span>
+      </span>
+    </nav>
+  </div>
+  <div class="works-list">
+    {projects.map((project) => (
+      <WorksItem
+        image={project.image}
+        title={project.title}
+        tags={project.tags}
+        link={project.link}
+      />
+    ))}
+  </div>
+</section>
+
+<style>
+  .works-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: calc(var(--spacing-section-gap) / 4);
+  }
+  .works-breadcrumbs {
+    display: flex;
+    align-items: center;
+  }
+  .works-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-section-gap) / 2);
+  }
+  @media (max-width: 767px) {
+    .works-header {
+      flex-direction: column;
+      gap: var(--spacing-page);
+    }
+    .works-breadcrumbs {
+      order: -1;
+    }
+  }
+</style>

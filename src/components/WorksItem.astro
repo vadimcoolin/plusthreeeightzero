@@ -1,0 +1,63 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  tags: string[];
+  link: string;
+}
+const { image, title, tags, link } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<a href={link} target="_blank" rel="noopener noreferrer" class="works-item">
+  <div class="works-image-wrap">
+    <img src={`${base}${image}`} alt={title} class="works-image" loading="lazy" />
+  </div>
+  <h3 class="works-title">{title}</h3>
+  <div class="works-tags">
+    {tags.map((tag) => (
+      <span class="works-tag">{tag}</span>
+    ))}
+  </div>
+</a>
+
+<style>
+  .works-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .works-image-wrap {
+    overflow: hidden;
+  }
+  .works-image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.3s;
+  }
+  .works-item:hover .works-image {
+    transform: scale(1.12);
+  }
+  .works-title {
+    font-size: var(--font-size-service-number);
+    font-weight: 500;
+    color: var(--color-secondary);
+    margin-top: 0.5em;
+    line-height: 1.3;
+    transition: opacity 0.3s;
+  }
+  .works-item:hover .works-title {
+    opacity: 0.6;
+  }
+  .works-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.375em;
+  }
+  .works-tag {
+    font-size: var(--font-size-service-list);
+    font-weight: 400;
+    color: var(--color-secondary);
+  }
+</style>

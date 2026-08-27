@@ -7,6 +7,7 @@ import About from '../../components/About.astro';
 import HoverTable from '../../components/HoverTable.astro';
 import PartnerSection from '../../components/PartnerSection.astro';
 import AboutCta from '../../components/AboutCta.astro';
+import Works from '../../components/Works.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -101,5 +102,25 @@ const base = import.meta.env.BASE_URL;
         buttonText="Build With Us"
       />
     </div>
+    <Works projects={[
+      {
+        image: 'works/techiia/title_case01.webp',
+        title: 'TECHIIA',
+        tags: ['+Brand Strategy', '+Logo Design', '+Identity', '+Art Direction', '+Web Design'],
+        link: 'https://www.behance.net/gallery/109170771/Techiia-Brand-Identity'
+      },
+      {
+        image: 'works/senseit/title_case02.webp',
+        title: 'Sense It',
+        tags: ['+Brand Strategy', '+Logo Design', '+Identity', '+Art Direction', '+Web Design'],
+        link: 'https://www.behance.net/gallery/116408711/Sense-it-Brand-Identity'
+      },
+      {
+        image: 'works/esports/title_case03.webp',
+        title: 'esports.ua',
+        tags: ['+Brand Strategy', '+Logo Design', '+Identity', '+Art Direction', '+Web Design'],
+        link: 'https://www.behance.net/gallery/133354453/esportsua-identity'
+      }
+    ]} />
   </main>
 </BaseLayout>
