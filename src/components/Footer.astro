@@ -1,0 +1,191 @@
+---
+import Logo from './Logo.astro';
+
+const lang = Astro.url.pathname.includes('/ua/') ? 'ua' : 'en';
+
+const navLinks = lang === 'ua'
+  ? [
+      { href: '#index', label: 'Головна' },
+      { href: '#services', label: 'Послуги' },
+      { href: '#about', label: 'Про нас' },
+      { href: '#works', label: 'Проєкти' },
+      { href: '#contacts', label: 'Контакти' },
+    ]
+  : [
+      { href: '#index', label: 'Index' },
+      { href: '#services', label: 'Services' },
+      { href: '#about', label: 'About' },
+      { href: '#works', label: 'Works' },
+      { href: '#contacts', label: 'Contact' },
+    ];
+
+const socialLinks = [
+  { href: 'https://www.linkedin.com', label: 'Linkedin' },
+  { href: 'https://www.facebook.com', label: 'Facebook' },
+  { href: 'https://www.instagram.com', label: 'Instagram' },
+  { href: 'https://www.behance.net', label: 'Behance' },
+  { href: 'https://www.dribbble.com', label: 'Dribbble' },
+];
+
+const ctaText = lang === 'ua'
+  ? 'Готові надати ясність вашому бренду та створити його разом?'
+  : 'Ready to bring clarity to your brand\nand build it together?';
+
+const ctaButton = 'Lets Talk';
+---
+<footer id="contacts" class="footer">
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <h2 class="font-medium" style={`font-size: var(--font-size-h3); line-height: 1.2; white-space: pre-line`}>{ctaText}</h2>
+      <a href="mailto:ivanrogovchenko@gmail.com" class="footer-button">
+        {ctaButton}
+      </a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col"></div>
+      <div class="footer-col"></div>
+      <div class="footer-col footer-nav">
+        {navLinks.map((link) => (
+          <a href={link.href} class="footer-link">{link.label}</a>
+        ))}
+      </div>
+      <div class="footer-col footer-social">
+        {socialLinks.map((link) => (
+          <a href={link.href} target="_blank" rel="noopener noreferrer" class="footer-link">{link.label}</a>
+        ))}
+      </div>
+      <div class="footer-col footer-legal">
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms & Conditions</a>
+        <p class="footer-copyright">© 2026 Plusthreeightzero. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-brand">
+      <Logo class="footer-logo" />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 0 var(--spacing-page) var(--spacing-page);
+  }
+  .footer-inner {
+    max-width: 100%;
+  }
+  .footer-cta {
+    padding-top: var(--spacing-block-gap);
+    margin-bottom: var(--spacing-block-gap);
+  }
+  .footer-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-button);
+    font-weight: 500;
+    height: var(--height-button);
+    padding: 0 var(--padding-button-x);
+    border-radius: 9999px;
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    text-decoration: none;
+    margin-top: 1.5em;
+  }
+  .footer-button:hover {
+    opacity: 0.6;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-page);
+    align-items: start;
+    margin-bottom: var(--spacing-block-gap);
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-nav,
+  .footer-social,
+  .footer-legal {
+    gap: 1em;
+  }
+  .footer-link {
+    font-size: var(--font-size-service-list);
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .footer-link:hover {
+    opacity: 0.6;
+  }
+  .footer-copyright {
+    font-size: var(--font-size-service-list);
+    font-weight: 400;
+    color: var(--color-primary);
+    line-height: 1.4;
+    margin-top: 0.5em;
+  }
+  .footer-brand {
+    width: 100%;
+    overflow: hidden;
+  }
+  .footer-logo {
+    width: 100%;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-logo :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 767px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-col:nth-child(1),
+    .footer-col:nth-child(2) {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var footerLogo = document.querySelector('.footer-logo');
+    if (!footerLogo) return;
+
+    var base = footerLogo.dataset.base || '';
+    var aspect = 0.2;
+
+    function updateHeight() {
+      var w = footerLogo.offsetWidth;
+      footerLogo.style.height = (w * aspect) + 'px';
+    }
+
+    fetch(base + 'logo/logo_state_01.svg')
+      .then(function(r) { return r.text(); })
+      .then(function(svgText) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(svgText, 'image/svg+xml');
+        var svg = doc.querySelector('svg');
+        if (svg) {
+          var vb = svg.viewBox;
+          if (vb && vb.baseVal && vb.baseVal.width && vb.baseVal.height) {
+            aspect = vb.baseVal.height / vb.baseVal.width;
+          }
+        }
+        updateHeight();
+      });
+
+    window.addEventListener('resize', updateHeight);
+  });
+</script>

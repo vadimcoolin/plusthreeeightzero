@@ -64,7 +64,8 @@ plusthreeeightzero/
 │   │   ├── PartnerSection.astro   ← 2-column: large H2 left, 5 text lines right
 │   │   ├── AboutCta.astro         ← CTA block for About section (text + button)
 │   │   ├── Works.astro            ← works section (title + breadcrumbs + project list)
-│   │   └── WorksItem.astro        ← single project: image + title (linked) + tags
+│   │   ├── WorksItem.astro        ← single project: image + title (linked) + tags
+│   │   └── Footer.astro           ← footer: inverted colors, CTA, 5-col menu, interactive logo
 │   └── styles/
 │       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
 ├── astro.config.mjs               ← Astro config (Tailwind v4 plugin + i18n)
@@ -207,6 +208,17 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 - X icon closes menu, same position as burger icon
 - Menu items centered vertically, language switcher at bottom
 - Menu items close menu on click
+
+## Footer
+
+- Inverted colors: `bg: var(--color-secondary)`, `text: var(--color-primary)`
+- CTA block: H3-sized text (`--font-size-h3`) + "Lets Talk" button (primary bg, rounded)
+- 5-column grid (`repeat(5, 1fr)`): columns 1-2 empty, 3=nav (repeats header links), 4=social links, 5=legal (Privacy Policy, Terms & Conditions, copyright)
+- Desktop: nav + social in adjacent columns; Mobile: 2-column grid (empty cols hidden)
+- Interactive logo at bottom: full width, uses `Logo.astro` component
+- Logo height calculated from `logo_state_01.svg` (longest variant) via JS — height stays constant regardless of selected variant, scales with viewport width via `resize` listener
+- `id="contacts"` — header already links to it
+- Bottom padding: `var(--spacing-page)` (24px)
 
 ## Documentation
 
