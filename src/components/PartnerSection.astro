@@ -6,12 +6,11 @@ interface Props {
 const { textLeft, itemsRight } = Astro.props;
 ---
 <section class="w-full section-gap-before">
-  <div class="partner-grid mobile-gap-before">
-    <div class="partner-left">
-      <h2 class="font-medium leading-[1.1]" style={`font-size: var(--font-size-h2)`}>
-        <span style={`color: var(--color-secondary)`}>{textLeft}</span>
-      </h2>
-    </div>
+  <div class="mobile-gap-before">
+    <h2 class="partner-left font-medium leading-[1.1]" style={`font-size: var(--font-size-h2)`}>
+      <span style={`color: var(--color-secondary)`}>{textLeft}</span>
+    </h2>
+    <div class="partner-spacer"></div>
     <div class="partner-right">
       {itemsRight.map((item) => (
         <p class="partner-item">{item}</p>
@@ -21,21 +20,17 @@ const { textLeft, itemsRight } = Astro.props;
 </section>
 
 <style>
-  .partner-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-  }
   .partner-left {
-    grid-column: 1;
-    grid-row: 1;
+    width: 66.666%;
+  }
+  .partner-spacer {
+    height: 24px;
   }
   .partner-right {
+    margin-left: 50%;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
-    grid-column: 2;
-    grid-row: 2;
   }
   .partner-item {
     font-size: var(--font-size-service-list);
@@ -44,12 +39,14 @@ const { textLeft, itemsRight } = Astro.props;
     line-height: 1.3;
   }
   @media (max-width: 767px) {
-    .partner-grid {
-      grid-template-columns: 1fr;
+    .partner-left {
+      width: 100%;
+    }
+    .partner-spacer {
+      height: 1.5em;
     }
     .partner-right {
-      grid-column: 1;
-      padding-top: 1.5em;
+      margin-left: 0;
       gap: 1em;
     }
   }

@@ -2,13 +2,16 @@
 import '../styles/global.css';
 
 const base = import.meta.env.BASE_URL;
+const siteUrl = 'https://coolin.cc/plusthreeeightzero';
 
 interface Props {
   title: string;
+  description: string;
   lang: string;
 }
 
-const { title, lang } = Astro.props;
+const { title, description, lang } = Astro.props;
+const ogImage = `${siteUrl}/ogimage_${lang}.png`;
 ---
 
 <!doctype html>
@@ -21,6 +24,18 @@ const { title, lang } = Astro.props;
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content={`${siteUrl}/${lang}/`} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
     <script is:inline>
@@ -46,5 +61,18 @@ const { title, lang } = Astro.props;
       })();
     </script>
     <slot />
+    <script>
+      import Lenis from 'lenis';
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        touchMultiplier: 2,
+      });
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    </script>
   </body>
 </html>

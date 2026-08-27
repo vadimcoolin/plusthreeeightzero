@@ -23,7 +23,7 @@ const switchUrl = lang === 'ua' ? `${base}en/` : `${base}ua/`;
 import Logo from './Logo.astro';
 ---
 
-<header class="absolute top-0 left-0 w-full z-50 js-header">
+<header class="fixed top-0 left-0 w-full z-50 js-header" style="transition: transform 0.3s ease, background-color 0.3s ease;">
   <nav class="flex items-center justify-between" style={`padding: var(--spacing-page) var(--spacing-page)`}>
     <Logo style="height: var(--spacing-logo); width: auto; color: var(--color-secondary)" />
 
@@ -170,6 +170,35 @@ import Logo from './Logo.astro';
   burgerToggle?.addEventListener('click', openMenu);
   burgerClose?.addEventListener('click', closeMenu);
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Header show/hide on scroll
+  let lastScrollY = 0;
+  let ticking = false;
+
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    const header = document.querySelector('.js-header');
+    if (!header) return;
+
+    if (scrollY <= 0) {
+      header.style.transform = 'translateY(0)';
+      header.style.backgroundColor = 'transparent';
+    } else if (scrollY > lastScrollY) {
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      header.style.transform = 'translateY(0)';
+      header.style.backgroundColor = 'var(--color-primary)';
+    }
+    lastScrollY = scrollY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  });
 
   // Logo cycling
   const logoEls = document.querySelectorAll('.js-logo');
