@@ -52,5 +52,11 @@ const { projects } = Astro.props;
       flex-direction: column;
       gap: var(--spacing-page);
     }
+    .works-header :global(h2) {
+      order: 1;
+    }
+    .works-header :global(nav) {
+      order: -1;
+    }
   }
 </style>

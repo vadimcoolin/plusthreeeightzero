@@ -39,6 +39,7 @@ plusthreeeightzero/
 │   ├── burger.svg                 ← burger menu icon (mobile)
 │   ├── x.svg                      ← close icon (mobile menu)
 │   ├── ptez_showreel.mp4          ← showreel video (loop, click to toggle audio)
+│   ├── works/                     ← project case images (techiia/, senseit/, esports/)
 │   └── favicon.svg                ← favicon (plus icon, dark mode aware)
 ├── src/
 │   ├── pages/
@@ -52,6 +53,7 @@ plusthreeeightzero/
 │   ├── components/
 │   │   ├── Header.astro           ← navigation + language switcher + theme toggle + burger menu
 │   │   ├── Logo.astro             ← interactive logo cycling (16 variants)
+│   │   ├── Breadcrumbs.astro      ← reusable breadcrumbs (plus icon + items, last item not underlined)
 │   │   ├── Showreel.astro         ← full-width video section (loop, click to toggle audio)
 │   │   ├── Services.astro         ← services section (breadcrumbs + H2 oversize text)
 │   │   ├── ServicesList.astro     ← 3 service rows with lines and numbers
@@ -60,7 +62,9 @@ plusthreeeightzero/
 │   │   ├── AboutStats.astro       ← 4 stat rows with + icons and large text
 │   │   ├── HoverTable.astro       ← 5-row table with hover effect (bg black, text white)
 │   │   ├── PartnerSection.astro   ← 2-column: large H2 left, 5 text lines right
-│   │   └── AboutCta.astro         ← CTA block for About section (text + button)
+│   │   ├── AboutCta.astro         ← CTA block for About section (text + button)
+│   │   ├── Works.astro            ← works section (title + breadcrumbs + project list)
+│   │   └── WorksItem.astro        ← single project: image + title (linked) + tags
 │   └── styles/
 │       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
 ├── astro.config.mjs               ← Astro config (Tailwind v4 plugin + i18n)

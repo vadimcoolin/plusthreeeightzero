@@ -16,10 +16,22 @@ const { items } = Astro.props;
     <span class="flex items-center" style={i === 0 ? 'margin-left: 24px' : ''}>
       {i > 0 && <span style={`color: var(--color-muted); padding: 0 12px`}>/</span>}
       {crumb.href ? (
-        <a href={crumb.href} style={`color: var(--color-muted); text-decoration: underline; text-underline-offset: 0.2em`} class="hover:text-[var(--color-secondary)] transition-colors">{crumb.label}</a>
+        <a href={crumb.href} class="breadcrumb-link">{crumb.label}</a>
       ) : (
         <span style={`color: var(--color-secondary)`}>{crumb.label}</span>
       )}
     </span>
   ))}
 </nav>
+
+<style>
+  .breadcrumb-link {
+    color: var(--color-muted);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 0.3s;
+  }
+  .breadcrumb-link:hover {
+    color: var(--color-secondary);
+  }
+</style>
