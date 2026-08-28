@@ -9,6 +9,7 @@ import PartnerSection from '../../components/PartnerSection.astro';
 import AboutCta from '../../components/AboutCta.astro';
 import Works from '../../components/Works.astro';
 import Footer from '../../components/Footer.astro';
+import ContactModal from '../../components/ContactModal.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -24,7 +25,7 @@ const base = import.meta.env.BASE_URL;
         <div class="font-semibold"><svg class="inline-block h-[1cap] w-auto align-baseline" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 12.2919H17.7089V0H12.2919V12.2919H0V17.7089H12.2919V30H17.7089V17.7089H30V12.2919Z" fill="currentColor"/></svg> Команди,</div>
         <div class="font-semibold md:text-right">Що Ними Керують</div>
       </h1>
-      <a href="mailto:ivanrogovchenko@gmail.com" class="inline-flex items-center justify-center border border-current font-medium w-fit rounded-full hover:bg-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors mt-8" style={`font-size: var(--font-size-button); height: var(--height-button); padding: 0 var(--padding-button-x)`}>
+      <a href="#" class="inline-flex items-center justify-center border border-current font-medium w-fit rounded-full hover:bg-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors mt-8 js-open-contact" style={`font-size: var(--font-size-button); height: var(--height-button); padding: 0 var(--padding-button-x)`}>
         Напишіть нам
       </a>
     </section>
@@ -125,4 +126,5 @@ const base = import.meta.env.BASE_URL;
     ]} />
   </main>
   <Footer />
+  <ContactModal />
 </BaseLayout>
