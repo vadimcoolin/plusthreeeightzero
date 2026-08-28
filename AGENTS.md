@@ -40,6 +40,8 @@ plusthreeeightzero/
 │   ├── x.svg                      ← close icon (mobile menu)
 │   ├── ptez_showreel.mp4          ← showreel video (loop, click to toggle audio)
 │   ├── works/                     ← project case images (techiia/, senseit/, esports/)
+│   ├── ogimage_en.png             ← Open Graph image (English)
+│   ├── ogimage_ua.png             ← Open Graph image (Ukrainian)
 │   └── favicon.svg                ← favicon (plus icon, dark mode aware)
 ├── src/
 │   ├── pages/
@@ -65,6 +67,7 @@ plusthreeeightzero/
 │   │   ├── AboutCta.astro         ← CTA block for About section (text + button)
 │   │   ├── Works.astro            ← works section (title + breadcrumbs + project list)
 │   │   ├── WorksItem.astro        ← single project: image + title (linked) + tags
+│   │   ├── ContactModal.astro     ← full-screen contact form popup (replaces mailto links)
 │   │   └── Footer.astro           ← footer: inverted colors, CTA, 5-col menu, interactive logo
 │   └── styles/
 │       └── global.css             ← Tailwind import + custom theme (colors, font, fluid variables)
@@ -96,7 +99,7 @@ plusthreeeightzero/
 - Language switcher: active language is `#28282A`, inactive is `#81807F`
 - Plus icon in title uses `h-[1cap]` (matches cap height of font)
 - Letter spacing: `-0.05em` globally (applied to body)
-- Contact button links to `mailto:ivanrogovchenko@gmail.com`
+- Contact button opens full-screen contact modal (ContactModal.astro), not mailto directly
 
 ## Spacing System
 
@@ -219,6 +222,43 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 - Logo height calculated from `logo_state_01.svg` (longest variant) via JS — height stays constant regardless of selected variant, scales with viewport width via `resize` listener
 - `id="contacts"` — header already links to it
 - Bottom padding: `var(--spacing-page)` (24px)
+
+## Header Scroll Behavior
+
+- `position: fixed` (not absolute) — stays in viewport
+- Hides on scroll down (`translateY(-100%)`)
+- Reappears on scroll up with primary background color
+- At top of page: transparent background
+- Smooth transition: `transition: transform 0.3s ease, background-color 0.3s ease`
+- Uses `requestAnimationFrame` for performance
+
+## Smooth Scroll
+
+- Lenis library (`npm install lenis`) for smooth anchor scrolling
+- Configured in `BaseLayout.astro`: duration 1.2, exponential easing
+- `scroll-behavior: smooth` also set in `global.css` as fallback
+
+## Open Graph & Meta Tags
+
+- `BaseLayout.astro` accepts `title`, `description`, `lang`, optional `pathLang` props
+- OG tags: `og:title`, `og:description`, `og:image` (1200×630), `og:url`, `og:type`
+- Twitter Card: `summary_large_image`
+- Per-language OG images: `ogimage_en.png`, `ogimage_ua.png` (in `public/`)
+- `pathLang` prop used for UA page (HTML `lang="uk"` but URL path is `/ua/`)
+
+## Contact Modal
+
+- Full-screen popup (`position: fixed; inset: 0; z-index: 100`)
+- Header: logo (same as header) + CLOSE button only
+- Title: same style as hero H1 (`--font-size-title`, uppercase, semibold, leading 0.95)
+- Form: Name*, Email*, Phone, Message* — labels Inter Regular 18px, placeholders H3 size
+- Inputs: no border/underline, placeholder grey (`--color-muted`), typed text secondary color
+- Required fields: red text on invalid (`:invalid:not(:placeholder-shown)`)
+- Message textarea: starts 1 line, auto-resizes via JS on input (max 40% viewport)
+- Submit: constructs `mailto:` link with form data (Name, Email, Phone, Message)
+- CTA buttons use `js-open-contact` class to open modal
+- Closes on CLOSE button click, Escape key
+- `overflow: hidden` on modal, `overflow: hidden` on textarea prevents grow beyond limit
 
 ## Documentation
 
