@@ -127,13 +127,13 @@ Spacing between sections uses **padding** (not margin) so that the gap color mat
 
 ## Theme System
 
-Clicking the + icon cycles through 6 themes: white → black → color1 → white → black → color2.
+Clicking the + icon cycles through 9 themes: white → black → color1 → white → black → color2 → white → black → color3.
 
 ### Theme Cycle
 
 The cycle depends on browser preference (`prefers-color-scheme`):
-- **Light mode**: white (0) → black (1) → color1 (2) → white (3) → black (4) → color2 (5)
-- **Dark mode**: black (1) → white (0) → color1 (2) → black (3) → white (4) → color2 (5)
+- **Light mode**: white (0) → black (1) → color1 (2) → white (3) → black (4) → color2 (5) → white (6) → black (7) → color3 (8)
+- **Dark mode**: black (1) → white (0) → color1 (2) → black (3) → white (4) → color2 (5) → black (6) → white (7) → color3 (8)
 
 ### Color Schemes
 
@@ -143,6 +143,7 @@ The cycle depends on browser preference (`prefers-color-scheme`):
 | Black   | #28282A      | #0F0F11      | #EBEAE5           | #81807F |
 | Color 1 | #E2E417      | #FEFFA8      | #ED008C           | #F39393 |
 | Color 2 | #FFDED2      | #FEE9E8      | #1D2795           | #696DB9 |
+| Color 3 | #C3DBCB      | #F1FAE5      | #A33E19           | #FF8000 |
 
 ### CSS Variables
 
